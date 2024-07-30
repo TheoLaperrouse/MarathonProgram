@@ -13,5 +13,7 @@
     "settings": "Settings",
     "githubRepo": "Github Repo",
     "calendar": "Calendar",
-    "bestTimeLabel": "Meilleur temps sur 2 km (s)"
+    "bestTimeLabel": "Best time on 2km",
+    "vma": "VMA Recap",
+    "marathonTimeInput": "Pace on marathon (min/km) :"
 }

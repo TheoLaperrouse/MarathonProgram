@@ -25,9 +25,9 @@
 </template>
 
 <script setup>
+import { useLocalStorage } from '@vueuse/core';
 import { watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useLocalStorage } from '@vueuse/core';
 
 const { locale } = useI18n();
 

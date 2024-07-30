@@ -13,5 +13,19 @@
     "settings": "Paramètres",
     "githubRepo": "Repo Github",
     "calendar": "Calendrier",
-    "bestTimeLabel": "Meilleur temps sur 2 km (s)"
+    "bestTimeLabel": "Meilleur temps sur 2 km (Ex: 7:45) :",
+    "vma": "Récap VMA",
+    "marathonTimeLabel": "Temps cible sur le marathon (Ex: 4:00:00) :",
+    "informations": "Compléter les informations",
+    "save": "Enregistrer",
+    "saved": "Bien enregistré!",
+    "settingsUpdated": "Paramètres mis à jour",
+    "cancel": "Annuler",
+    "slowRun": "Jogging lent",
+    "mediumRun": "Jogging",
+    "thresholdRun": "Seuil",
+    "intervalsRun": "Fractionné",
+    "fastIntervalsRun": "Fractionné rapide",
+    "vmaInformations": "Informations sur vos allures selon le pourcentage de VMA :",
+    "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min"
 }

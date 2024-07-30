@@ -11,6 +11,7 @@
 </template>
 
 <script setup>
-import { useLocalStorage } from '@vueuse/core';
-const bestTime = useLocalStorage('bestTime', '');
+import { usePerformance } from '@/composables/usePerformance';
+
+const { bestTime } = usePerformance();
 </script>
