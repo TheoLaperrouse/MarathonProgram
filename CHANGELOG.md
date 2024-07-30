@@ -1,3 +1,11 @@
+# [1.3.0](https://github.com/TheoLaperrouse/SportProgram/compare/v1.2.0...v1.3.0) (2024-07-30)
+
+
+### Features
+
+* better SettingsPage / add composables / locales ([3da22ec](https://github.com/TheoLaperrouse/SportProgram/commit/3da22ec65c4f2283f6e5b6ea0fa6b7ef84ad6600))
+* new VMAPage / better HomePage ([320f329](https://github.com/TheoLaperrouse/SportProgram/commit/320f329be80c3d667bec30212e646774275dfcb2))
+
 # [1.2.0](https://github.com/TheoLaperrouse/SportProgram/compare/v1.1.0...v1.2.0) (2024-07-30)
 
 
