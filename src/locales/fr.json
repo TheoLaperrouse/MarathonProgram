@@ -2,5 +2,16 @@
     "welcome": "Bienvenue sur SportProgram",
     "description1": "Découvrez notre application dédiée à la visualisation de programmes sportifs pour des courses.",
     "description2": "Planifiez, suivez et optimisez votre entraînement avec des outils intuitifs et des informations détaillées.",
-    "start": "Commencer"
+    "start": "Commencer",
+    "endurance": "Endurance fondamentale",
+    "threshold": "Seuil",
+    "interval": "Fractionné",
+    "todayWorkout": "Séance d'aujourd'hui",
+    "noSession": "Aucune séance prévue pour aujourd'hui.",
+    "dayProgram": "Programme du jour",
+    "home": "Accueil",
+    "settings": "Paramètres",
+    "githubRepo": "Repo Github",
+    "calendar": "Calendrier",
+    "bestTimeLabel": "Meilleur temps sur 2 km (s)"
 }

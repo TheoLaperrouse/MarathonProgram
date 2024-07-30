@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { watch } from 'vue';
+import { watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useLocalStorage } from '@vueuse/core';
 
@@ -37,6 +37,10 @@ const languages = [
 ];
 
 const selectedLanguage = useLocalStorage('language', locale.value);
+
+onMounted(() => {
+    locale.value = selectedLanguage.value;
+});
 
 watch(selectedLanguage, (newLang) => {
     locale.value = newLang;

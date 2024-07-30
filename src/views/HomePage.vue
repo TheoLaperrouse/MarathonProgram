@@ -21,7 +21,10 @@
 <script setup>
 import Swal from 'sweetalert2';
 import { useLocalStorage } from '@vueuse/core';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const bestTime = useLocalStorage('bestTime', '');
-const openModal = () => Swal.fire('Temps le + rapide sur 2km');
+const openModal = () => Swal.fire(t('bestTimeLabel'));
 </script>

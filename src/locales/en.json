@@ -2,5 +2,16 @@
     "welcome": "Welcome to SportProgram",
     "description1": "Discover our application dedicated to visualizing sports programs for running.",
     "description2": "Plan, track, and optimize your training with intuitive tools and detailed insights.",
-    "start": "Get Started"
+    "start": "Get Started",
+    "endurance": "Endurance",
+    "threshold": "Threshold",
+    "interval": "Interval",
+    "todayWorkout": "Today's Workout",
+    "noSession": "No session scheduled for today.",
+    "dayProgram": "Day Program",
+    "home": "Home",
+    "settings": "Settings",
+    "githubRepo": "Github Repo",
+    "calendar": "Calendar",
+    "bestTimeLabel": "Meilleur temps sur 2 km (s)"
 }

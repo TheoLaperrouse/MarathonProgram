@@ -9,28 +9,23 @@
                 >
                     <font-awesome-icon
                         :icon="link.icon"
-                        v-tooltip="!isSidebarOpen ? link.text : ''"
+                        v-tooltip="!isSidebarOpen ? $t(link.text) : ''"
                         class="mr-4 text-2xl"
                     />
-                    <span v-if="isSidebarOpen" :title="link.text">{{ link.text }}</span>
+                    <span v-if="isSidebarOpen">{{ $t(link.text) }}</span>
                 </router-link>
             </li>
             <li class="py-4">
                 <a :href="githubLink" target="_blank" class="flex items-center">
                     <font-awesome-icon
                         :icon="faGithub"
-                        v-tooltip="!isSidebarOpen ? 'Repo Github' : ''"
+                        v-tooltip="!isSidebarOpen ? $t('githubRepo') : ''"
                         class="mr-4 text-2xl"
                     />
                     <span v-if="isSidebarOpen"> Repo Github </span>
                 </a>
             </li>
         </ul>
-        <div class="fixed bottom-0 left-4">
-            <button @click="logout" class="absolute bottom-4 h-10 w-10 rounded-full bg-red-500 hover:bg-red-600">
-                <font-awesome-icon :icon="faSignOutAlt" />
-            </button>
-        </div>
         <button
             @click="toggleSidebar"
             :class="[
@@ -45,31 +40,28 @@
 
 <script setup>
 import { useLocalStorage } from '@vueuse/core';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
     faHome,
     faCalendar,
-    faSignOutAlt,
     faStopwatch,
     faChevronLeft,
     faChevronRight,
+    faGear,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-
-const router = useRouter();
 
 const isSidebarOpen = useLocalStorage('isSidebarOpen', true);
 
 const toggleSidebar = () => (isSidebarOpen.value = !isSidebarOpen.value);
 
 const menuLinks = [
-    { to: '/', text: 'Accueil', icon: faHome },
-    { to: '/daily-program', text: 'Programme du jour', icon: faStopwatch },
-    { to: '/calendar', text: 'Calendrier', icon: faCalendar },
+    { to: '/', text: 'home', icon: faHome },
+    { to: '/day-program', text: 'dayProgram', icon: faStopwatch },
+    { to: '/calendar', text: 'calendar', icon: faCalendar },
+    { to: '/settings', text: 'settings', icon: faGear },
 ];
 
 const githubLink = 'https://github.com/TheoLaperrouse/SportProgram';
-
-const logout = () => router.push('/signin');
 </script>
