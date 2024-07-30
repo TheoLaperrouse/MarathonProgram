@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/TheoLaperrouse/SportProgram/compare/v1.1.0...v1.2.0) (2024-07-30)
+
+
+### Features
+
+* dayProgram component / input personalRecordInput ([7b526e7](https://github.com/TheoLaperrouse/SportProgram/commit/7b526e79340030f71575bc2d7902b0caeb9634d3))
+
 # [1.1.0](https://github.com/TheoLaperrouse/SportProgram/compare/v1.0.0...v1.1.0) (2024-07-26)
 
 
