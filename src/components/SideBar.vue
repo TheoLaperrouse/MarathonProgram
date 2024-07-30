@@ -39,18 +39,19 @@
 </template>
 
 <script setup>
-import { useLocalStorage } from '@vueuse/core';
-// import { useRouter } from 'vue-router';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
     faHome,
     faCalendar,
     faStopwatch,
+    faTachometerAlt,
     faChevronLeft,
     faChevronRight,
     faGear,
 } from '@fortawesome/free-solid-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+// import { useRouter } from 'vue-router';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { useLocalStorage } from '@vueuse/core';
 
 const isSidebarOpen = useLocalStorage('isSidebarOpen', true);
 
@@ -60,6 +61,7 @@ const menuLinks = [
     { to: '/', text: 'home', icon: faHome },
     { to: '/day-program', text: 'dayProgram', icon: faStopwatch },
     { to: '/calendar', text: 'calendar', icon: faCalendar },
+    { to: '/vma', text: 'vma', icon: faTachometerAlt },
     { to: '/settings', text: 'settings', icon: faGear },
 ];
 
