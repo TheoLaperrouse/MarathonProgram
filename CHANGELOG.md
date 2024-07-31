@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/TheoLaperrouse/SportProgram/compare/v1.3.0...v1.4.0) (2024-07-31)
+
+
+### Features
+
+* add an input for marathonDate ([97c16ba](https://github.com/TheoLaperrouse/SportProgram/commit/97c16bad5a892494f3e5c3d2e88b6bd98e690ae8))
+
 # [1.3.0](https://github.com/TheoLaperrouse/SportProgram/compare/v1.2.0...v1.3.0) (2024-07-30)
 
 
