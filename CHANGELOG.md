@@ -4,6 +4,21 @@
 ### Bug Fixes
 
 * move language to settings ([3ec87c5](https://github.com/TheoLaperrouse/SportProgram/commit/3ec87c552dab2ca9edb5d927742b9bbdafa013fc))
+* move timeFormat to useFormatter ([9be8fdd](https://github.com/TheoLaperrouse/SportProgram/commit/9be8fddc306329fda72754ede617b9ed0bd744d6))
+
+
+### Features
+
+* add a calendar of training session and some new settings ([78a45ea](https://github.com/TheoLaperrouse/SportProgram/commit/78a45ead3c1fe7092dac7177d156f01465c8616e))
+* add an input for marathonDate ([97c16ba](https://github.com/TheoLaperrouse/SportProgram/commit/97c16bad5a892494f3e5c3d2e88b6bd98e690ae8))
+* add some styles to training card ([1a47a1c](https://github.com/TheoLaperrouse/SportProgram/commit/1a47a1ceb0694a00220e4265188487a62862c6fe))
+
+# [1.4.0](https://github.com/TheoLaperrouse/SportProgram/compare/v1.3.0...v1.4.0) (2024-07-31)
+
+
+### Bug Fixes
+
+* move language to settings ([3ec87c5](https://github.com/TheoLaperrouse/SportProgram/commit/3ec87c552dab2ca9edb5d927742b9bbdafa013fc))
 
 
 ### Features
