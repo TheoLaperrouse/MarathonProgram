@@ -54,7 +54,7 @@ export const useProgram = () => {
         return addDays(marathonDateObj, daysUntilNextDay);
     };
 
-    const generateTrainingSchedule = (startDate) => {
+    const trainingSchedule = computed(() => {
         let dayCounter = 0;
 
         const currentProgram = program.value;
@@ -64,7 +64,7 @@ export const useProgram = () => {
         Object.keys(currentProgram).forEach((weekKey) => {
             const sessions = currentProgram[weekKey];
             sessions.forEach((session) => {
-                const dateStr = format(addDays(startDate, dayCounter), 'dd/MM/yyyy');
+                const dateStr = format(addDays(Date.now(), dayCounter), 'dd/MM/yyyy');
                 schedule[dateStr] = session;
                 dayCounter += 2;
             });
@@ -76,7 +76,7 @@ export const useProgram = () => {
                 sorted[date] = training;
                 return sorted;
             }, {});
-    };
+    });
 
     return {
         dayTraining,
@@ -87,6 +87,6 @@ export const useProgram = () => {
         program,
         marathonProgramDate,
         getNextDay,
-        generateTrainingSchedule,
+        trainingSchedule,
     };
 };

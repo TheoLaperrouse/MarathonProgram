@@ -16,10 +16,31 @@
                 </div>
             </template>
             <template v-else-if="type === 'thresholdRun'">
-                <div></div>
+                <div>
+                    <span class="block">{{ $t('warmUpDescription', { warmUpTime: training.warmUpTime }) }}</span>
+                    <span class="block">{{
+                        $t('thresholdDescription', {
+                            repetition: training.repetition,
+                            distance: training.distance,
+                            warmUpTime: training.warmUpTime,
+                            recupTime: training.recupTime,
+                        })
+                    }}</span>
+                </div>
             </template>
             <template v-else-if="['intervalsRun', 'fastIntervalsRun'].includes(type)">
-                <div></div>
+                <div>
+                    <span class="block">{{ $t('warmUpDescription', { warmUpTime: training.warmUpTime }) }}</span>
+                    <span class="block">{{
+                        $t('intervalDescription', {
+                            intervalRepetition: training.intervalRepetition,
+                            repetition: training.repetition,
+                            time1: training.time1,
+                            time2: training.time2,
+                            warmUpTime: training.warmUpTime,
+                        })
+                    }}</span>
+                </div>
             </template>
         </template>
     </div>

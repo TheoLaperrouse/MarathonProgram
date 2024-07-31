@@ -29,7 +29,6 @@
     "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min",
     "marathonDate": "Date de votre marathon :",
     "marathonDateInformations": "Votre marathon est prévu le {formattedMarathonDate}",
-    "slowMediumRunDescription": "Courez {time} à une allure de {pace} min/km ({percentVMA}% VMA)",
     "languageInput": "Langue :",
     "runType": "Type de course",
     "percentVMA": "% VMA",
@@ -45,5 +44,9 @@
         "friday": "Vendredi",
         "saturday": "Samedi",
         "sunday": "Dimanche"
-    }
+    },
+    "slowMediumRunDescription": "{time} à {pace}/km ({percentVMA}% VMA)",
+    "intervalDescription": "{repetition} x ({intervalsRepetition} x {time1}/{time2}) ( Récup : {recupTime})",
+    "thresholdDescription": "{repetition} x {distance}m ( Récup : {recupTime})",
+    "warmUpDescription": "Échauffement : {warmUpTime}"
 }
