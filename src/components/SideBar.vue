@@ -1,6 +1,11 @@
 <template>
-    <div :class="['menu min-h-screen bg-gray-800 text-white', isSidebarOpen ? 'min-w-[250px]' : 'min-w-[80px]']">
-        <ul class="fixed ml-6 mt-4">
+    <div
+        :class="[
+            'menu min-h-screen bg-gray-800 text-white flex flex-col',
+            isSidebarOpen ? 'min-w-[250px]' : 'min-w-[80px]',
+        ]"
+    >
+        <ul class="mt-4 flex-1 ml-6">
             <li class="py-4" v-for="(link, index) in menuLinks" :key="index">
                 <router-link
                     :class="{ 'text-indigo-400': $route.path === link.to }"
@@ -15,17 +20,17 @@
                     <span v-if="isSidebarOpen">{{ $t(link.text) }}</span>
                 </router-link>
             </li>
-            <li class="py-4">
-                <a :href="githubLink" target="_blank" class="flex items-center">
-                    <font-awesome-icon
-                        :icon="faGithub"
-                        v-tooltip="!isSidebarOpen ? $t('githubRepo') : ''"
-                        class="mr-4 text-2xl"
-                    />
-                    <span v-if="isSidebarOpen"> Repo Github </span>
-                </a>
-            </li>
         </ul>
+        <div class="flex-shrink-0 py-4 ml-6">
+            <a :href="githubLink" target="_blank" class="flex items-center">
+                <font-awesome-icon
+                    :icon="faGithub"
+                    v-tooltip="!isSidebarOpen ? $t('githubRepo') : ''"
+                    class="mr-4 text-2xl"
+                />
+                <span v-if="isSidebarOpen">Repo Github</span>
+            </a>
+        </div>
         <button
             @click="toggleSidebar"
             :class="[
@@ -49,7 +54,6 @@ import {
     faChevronRight,
     faGear,
 } from '@fortawesome/free-solid-svg-icons';
-// import { useRouter } from 'vue-router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useLocalStorage } from '@vueuse/core';
 

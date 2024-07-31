@@ -1,6 +1,6 @@
 <template>
     <div class="ml-3 mt-3 max-w-sm space-y-4 rounded-xl bg-gray-200 p-6 shadow-md">
-        <h2 class="text-xl font-semibold text-gray-700">{{ $t('bestTimeLabel') }}</h2>
+        <h2 class="text-xl font-semibold text-gray-700">{{ $t('bestTimeInput') }}</h2>
         <input
             v-model="bestTime"
             type="number"

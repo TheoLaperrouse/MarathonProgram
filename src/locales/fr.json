@@ -1,7 +1,6 @@
 {
-    "welcome": "Bienvenue sur SportProgram",
-    "description1": "Découvrez notre application dédiée à la visualisation de programmes sportifs pour des courses.",
-    "description2": "Planifiez, suivez et optimisez votre entraînement avec des outils intuitifs et des informations détaillées.",
+    "homeWelcome": "Bienvenue sur SportProgram",
+    "homeDescription": "Découvrez notre application dédiée à la visualisation de programmes sportifs pour des courses.<br/><br/>Planifiez, suivez et optimisez votre entraînement avec des outils intuitifs et des informations détaillées.<br/><br/>Définissez votre objectif et votre meilleur temps sur 2 km en cliquant ici :",
     "start": "Commencer",
     "endurance": "Endurance fondamentale",
     "threshold": "Seuil",
@@ -13,9 +12,9 @@
     "settings": "Paramètres",
     "githubRepo": "Repo Github",
     "calendar": "Calendrier",
-    "bestTimeLabel": "Meilleur temps sur 2 km (Ex: 7:45) :",
+    "bestTimeInput": "Meilleur temps sur 2 km (Ex: 7:45) :",
     "vma": "Récap VMA",
-    "marathonTimeLabel": "Temps cible sur le marathon (Ex: 4:00:00) :",
+    "marathonTimeInput": "Temps cible sur le marathon (Ex: 4:00:00) :",
     "informations": "Compléter les informations",
     "save": "Enregistrer",
     "saved": "Bien enregistré!",
@@ -27,5 +26,8 @@
     "intervalsRun": "Fractionné",
     "fastIntervalsRun": "Fractionné rapide",
     "vmaInformations": "Informations sur vos allures selon le pourcentage de VMA :",
-    "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min"
+    "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min",
+    "marathonDate": "Date de votre marathon :",
+    "marathonDateInformations": "Votre marathon est prévu le {formattedMarathonDate}",
+    "slowMediumRunDescription": "Courez {time} à une allure de {pace} min/km ({percentVMA}% VMA)"
 }
