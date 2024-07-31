@@ -1,10 +1,9 @@
 import { useFormatter } from '@/composables/useFormatter';
-import { convertTimeToSeconds, formatSecondsToMinutes } from '@/utils/time.utils';
 import { useLocalStorage } from '@vueuse/core';
 import { computed } from 'vue';
 
 export const usePerformance = () => {
-    const { formatter } = useFormatter();
+    const { formatter, formatSecondsToMinutes, convertTimeToSeconds } = useFormatter();
     const bestTime = useLocalStorage('bestTime', '8:30');
     const marathonTime = useLocalStorage('marathonTime', '4:00:00');
 
@@ -20,11 +19,11 @@ export const usePerformance = () => {
     };
 
     const paces = computed(() => ({
-        slowRun: { pace: pacePercentVma(50), percentVMA: 50 },
-        mediumRun: { pace: pacePercentVma(70), percentVMA: 70 },
-        thresholdRun: { pace: pacePercentVma(82.5), percentVMA: 100 },
-        intervalsRun: { pace: pacePercentVma(100), percentVMA: 100 },
-        fastIntervalsRun: { pace: pacePercentVma(110), percentVMA: 110 },
+        slowRun: { pace: pacePercentVma(50), percentVMA: 50, color: '#FFCCCC' },
+        mediumRun: { pace: pacePercentVma(70), percentVMA: 70, color: '#FF9999' },
+        thresholdRun: { pace: pacePercentVma(82.5), percentVMA: 82.5, color: '#FF6666' },
+        intervalsRun: { pace: pacePercentVma(100), percentVMA: 100, color: '#FF3333' },
+        fastIntervalsRun: { pace: pacePercentVma(110), percentVMA: 110, color: '#FF0000' },
     }));
 
     return { paces, VO2Max, VMAKmH, marathonTime, bestTime, bestTimeSeconds, marathonTimeSeconds };
