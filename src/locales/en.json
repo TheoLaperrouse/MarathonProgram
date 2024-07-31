@@ -30,5 +30,15 @@
     "marathonDate": "Marathon date :",
     "marathonDateInformations": "Your marathon is scheduled {formattedMarathonDate}",
     "slowMediumRunDescription": "Run {time} minutes at a {pace} min/km pace ({percentVMA}% VMA)",
-    "languageInput": "Language :"
+    "languageInput": "Language :",
+    "trainingDaysInput": "Number of training days in week",
+    "daysOfWeek": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
+    }
 }

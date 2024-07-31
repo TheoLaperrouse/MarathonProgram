@@ -2,7 +2,7 @@
     <div
         :class="[
             'menu min-h-screen bg-gray-800 text-white flex flex-col',
-            isSidebarOpen ? 'min-w-[250px]' : 'min-w-[80px]',
+            isSidebarOpen ? 'min-w-[225px]' : 'min-w-[80px]',
         ]"
     >
         <ul class="mt-4 flex-1 ml-6">
@@ -28,14 +28,14 @@
                     v-tooltip="!isSidebarOpen ? $t('githubRepo') : ''"
                     class="mr-4 text-2xl"
                 />
-                <span v-if="isSidebarOpen">Repo Github</span>
+                <span v-if="isSidebarOpen">{{ $t('githubRepo') }}</span>
             </a>
         </div>
         <button
             @click="toggleSidebar"
             :class="[
                 'absolute bottom-4 rounded-full border border-gray-600 bg-gray-800 p-2 text-white hover:bg-gray-700',
-                isSidebarOpen ? 'left-[234px]' : 'left-[64px]',
+                isSidebarOpen ? 'left-[209px]' : 'left-[64px]',
             ]"
         >
             <font-awesome-icon :icon="isSidebarOpen ? faChevronLeft : faChevronRight" class="text-xl" />
@@ -49,10 +49,10 @@ import {
     faHome,
     faCalendar,
     faStopwatch,
-    faTachometerAlt,
     faChevronLeft,
     faChevronRight,
     faGear,
+    faPersonRunning,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useLocalStorage } from '@vueuse/core';
@@ -63,9 +63,9 @@ const toggleSidebar = () => (isSidebarOpen.value = !isSidebarOpen.value);
 
 const menuLinks = [
     { to: '/', text: 'home', icon: faHome },
-    { to: '/day-program', text: 'dayProgram', icon: faStopwatch },
+    { to: '/day-program', text: 'dayProgram', icon: faPersonRunning },
     { to: '/calendar', text: 'calendar', icon: faCalendar },
-    { to: '/vma', text: 'vma', icon: faTachometerAlt },
+    { to: '/vma', text: 'vma', icon: faStopwatch },
     { to: '/settings', text: 'settings', icon: faGear },
 ];
 

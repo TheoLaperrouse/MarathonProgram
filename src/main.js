@@ -1,10 +1,10 @@
-import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router';
-import './index.css';
 import i18n from './i18n';
+import './index.css';
+import router from './router';
 import FloatingVue from 'floating-vue';
 import 'floating-vue/dist/style.css';
+import { createApp } from 'vue';
 
 const app = createApp(App);
 

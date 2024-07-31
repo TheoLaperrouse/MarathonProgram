@@ -6,9 +6,9 @@
         <table class="w-full table-auto border-collapse border border-gray-200">
             <thead>
                 <tr class="bg-gray-100">
-                    <th class="border border-gray-300 px-4 py-2">Type de course</th>
-                    <th class="border border-gray-300 px-4 py-2">% VMA</th>
-                    <th class="border border-gray-300 px-4 py-2">Allure</th>
+                    <th class="border border-gray-300 px-4 py-2">{{ $t('runType') }}</th>
+                    <th class="border border-gray-300 px-4 py-2">{{ $t('percentVMA') }}</th>
+                    <th class="border border-gray-300 px-4 py-2">{{ $t('pace') }}</th>
                 </tr>
             </thead>
             <tbody>
