@@ -29,5 +29,6 @@
     "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min",
     "marathonDate": "Date de votre marathon :",
     "marathonDateInformations": "Votre marathon est prévu le {formattedMarathonDate}",
-    "slowMediumRunDescription": "Courez {time} à une allure de {pace} min/km ({percentVMA}% VMA)"
+    "slowMediumRunDescription": "Courez {time} à une allure de {pace} min/km ({percentVMA}% VMA)",
+    "languageInput": "Langue :"
 }

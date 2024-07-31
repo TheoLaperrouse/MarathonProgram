@@ -14,7 +14,7 @@
     "calendar": "Calendar",
     "bestTimeInput": "Best time on 2km :",
     "vma": "VMA Recap",
-    "marathonTimeInput": "Time on marathon (min/km) :",
+    "marathonTimeInput": "Time on marathon (4:00:00) :",
     "informations": "Complete the information",
     "save": "Save",
     "saved": "Successfully saved!",
@@ -29,5 +29,6 @@
     "VO2MaxInformations": "Your VO2Max is {VO2Max} ml/kg/min",
     "marathonDate": "Marathon date :",
     "marathonDateInformations": "Your marathon is scheduled {formattedMarathonDate}",
-    "slowMediumRunDescription": "Run {time} minutes at a {pace} min/km pace ({percentVMA}% VMA)"
+    "slowMediumRunDescription": "Run {time} minutes at a {pace} min/km pace ({percentVMA}% VMA)",
+    "languageInput": "Language :"
 }

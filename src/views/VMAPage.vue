@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-4 ml-4 mr-4">
+    <div class="p-4">
         <h1 class="mb-4 text-3xl font-bold">{{ $t('vma') }}</h1>
         <div>{{ $t('VO2MaxInformations', { VO2Max }) }}</div>
         <h1 class="mb-4 text-1xl font-bold mt-4">{{ $t('vmaInformations') }}</h1>

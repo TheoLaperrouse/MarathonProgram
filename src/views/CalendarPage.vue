@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-4 ml-4">
+    <div class="p-4">
         <h1 class="mb-4 text-3xl font-bold">{{ $t('calendar') }}</h1>
         <div class>{{ $t('marathonDateInformations', { formattedMarathonDate }) }}</div>
     </div>
