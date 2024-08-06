@@ -1,7 +1,7 @@
 {
     "homeWelcome": "Welcome to SportProgram",
-    "homeDescription": "Discover our application dedicated to the visualization of sports programs for running.<br/><br/>Plan, track, and optimize your training with intuitive tools and detailed information.<br/><br/>Set your goal and your best time on 2 km by clicking here:",
-    "start": "Get Started",
+    "homeDescription": "Discover our application dedicated to the visualization of sports programs for running.<br/><br/>Plan, track, and optimize your training with intuitive tools and detailed information.<br/><br/>Go to settings to set up your program:",
+    "start": "Go to settings",
     "endurance": "Endurance",
     "threshold": "Threshold",
     "interval": "Interval",

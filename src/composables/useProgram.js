@@ -5,7 +5,7 @@ import {
     sixTrainingsDayProgram,
 } from '@/trainingPrograms/trainingPrograms';
 import { useLocalStorage } from '@vueuse/core';
-import { format, addDays, getDay, subWeeks } from 'date-fns';
+import { format, addDays, subWeeks, getDay } from 'date-fns';
 import { computed } from 'vue';
 
 export const useProgram = () => {
@@ -30,40 +30,36 @@ export const useProgram = () => {
         marathonProgramDate.value ? humanizeDate(marathonProgramDate.value) : null,
     );
 
-    const getNextDay = (dayIndex) => {
-        if (!marathonDate.value) return null;
-
-        const marathonDateObj = new Date();
-        const currentDay = getDay(marathonDateObj);
-
-        const targetDay = (dayIndex + 1) % 7;
-
-        let daysUntilNextDay = (targetDay - currentDay + 7) % 7;
-        if (daysUntilNextDay === 0) {
-            daysUntilNextDay = 7;
+    const getNextTrainingDay = (currentDate) => {
+        const currentDay = getDay(currentDate);
+        for (let i = 1; i <= 7; i++) {
+            const nextDay = (currentDay + i) % 7;
+            if (trainingDayChoices.value.includes(nextDay)) {
+                return addDays(currentDate, i);
+            }
         }
-
-        return addDays(marathonDateObj, daysUntilNextDay);
+        return addDays(currentDate, 1);
     };
 
     const trainingSchedule = computed(() => {
-        let dayCounter = 0;
-
+        let currentDate = marathonProgramDate.value;
         const currentProgram = program.value;
-
         const schedule = {};
 
         Object.keys(currentProgram).forEach((weekKey) => {
             const sessions = currentProgram[weekKey];
             sessions.forEach((session) => {
-                const dateStr = format(addDays(marathonProgramDate.value, dayCounter), 'dd/MM/yyyy');
+                currentDate = getNextTrainingDay(currentDate);
+                const dateStr = format(currentDate, 'dd/MM/yyyy');
                 schedule[dateStr] = session;
-                dayCounter += 2;
             });
         });
 
         return Object.entries(schedule)
-            .sort(([dateA], [dateB]) => new Date(dateA) - new Date(dateB))
+            .sort(
+                ([dateA], [dateB]) =>
+                    new Date(dateA.split('/').reverse().join('-')) - new Date(dateB.split('/').reverse().join('-')),
+            )
             .reduce((sorted, [date, training]) => {
                 sorted[date] = training;
                 return sorted;
@@ -83,7 +79,6 @@ export const useProgram = () => {
         trainingDayChoices,
         program,
         marathonProgramDate,
-        getNextDay,
         trainingSchedule,
         formattedProgramDate,
     };

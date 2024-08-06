@@ -1,7 +1,7 @@
 {
     "homeWelcome": "Bienvenue sur SportProgram",
-    "homeDescription": "Découvrez notre application dédiée à la visualisation de programmes sportifs pour des courses.<br/><br/>Planifiez, suivez et optimisez votre entraînement avec des outils intuitifs et des informations détaillées.<br/><br/>Définissez votre objectif et votre meilleur temps sur 2 km en cliquant ici :",
-    "start": "Commencer",
+    "homeDescription": "Découvrez notre application dédiée à la visualisation de programmes sportifs pour des courses.<br/><br/>Planifiez, suivez et optimisez votre entraînement avec des outils intuitifs et des informations détaillées.<br/><br/>Dans un premier temps, aller dans les paramètres pour renseigner vos données :",
+    "start": "Aller au paramètres",
     "endurance": "Endurance fondamentale",
     "threshold": "Seuil",
     "interval": "Fractionné",
@@ -49,5 +49,8 @@
     "intervalDescription": "{repetition} x ({intervalsRepetition} x {time1}/{time2}) ( Récup : {recupTime})",
     "thresholdDescription": "{repetition} x {distance}m ( Récup : {recupTime})",
     "warmUpDescription": "Échauffement : {warmUpTime}",
-    "noTraining": "Pas d'entraînement à effectuer aujourd'hui, reposez vous"
+    "longRun": "Sortie longue",
+    "marathon": "Marathon",
+    "noTraining": "Pas d'entraînement à effectuer aujourd'hui, reposez vous",
+    "marathonProgram": "Informations sur votre programme Marathon"
 }
