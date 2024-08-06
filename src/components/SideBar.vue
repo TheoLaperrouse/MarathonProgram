@@ -7,23 +7,23 @@
     >
         <ul class="mt-4 flex-1 ml-6">
             <li class="py-4" v-for="(link, index) in menuLinks" :key="index">
-                <router-link
+                <RouterLink
                     :class="{ 'text-indigo-400': $route.path === link.to }"
                     :to="link.to"
                     class="flex items-center"
                 >
-                    <font-awesome-icon
+                    <FontAwesomeIcon
                         :icon="link.icon"
                         v-tooltip="!isSidebarOpen ? $t(link.text) : ''"
                         class="mr-4 text-2xl"
                     />
                     <span v-if="isSidebarOpen">{{ $t(link.text) }}</span>
-                </router-link>
+                </RouterLink>
             </li>
         </ul>
         <div class="flex-shrink-0 py-4 ml-6">
             <a :href="githubLink" target="_blank" class="flex items-center">
-                <font-awesome-icon
+                <FontAwesomeIcon
                     :icon="faGithub"
                     v-tooltip="!isSidebarOpen ? $t('githubRepo') : ''"
                     class="mr-4 text-2xl"
@@ -38,7 +38,7 @@
                 isSidebarOpen ? 'left-[209px]' : 'left-[64px]',
             ]"
         >
-            <font-awesome-icon :icon="isSidebarOpen ? faChevronLeft : faChevronRight" class="text-xl" />
+            <FontAwesomeIcon :icon="isSidebarOpen ? faChevronLeft : faChevronRight" class="text-xl" />
         </button>
     </div>
 </template>
@@ -71,3 +71,11 @@ const menuLinks = [
 
 const githubLink = 'https://github.com/TheoLaperrouse/SportProgram';
 </script>
+<style scoped>
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+</style>

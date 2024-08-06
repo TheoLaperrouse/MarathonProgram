@@ -28,7 +28,7 @@
     "vmaInformations": "Informations sur vos allures selon le pourcentage de VMA :",
     "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min",
     "marathonDate": "Date de votre marathon :",
-    "marathonDateInformations": "Votre marathon est prévu le {formattedMarathonDate}",
+    "marathonDateInformations": "Votre marathon est prévu le {formattedMarathonDate}.<br/> Votre programme commencera donc le {formattedProgramDate}",
     "languageInput": "Langue :",
     "runType": "Type de course",
     "percentVMA": "% VMA",
@@ -48,5 +48,6 @@
     "slowMediumRunDescription": "{time} à {pace}/km ({percentVMA}% VMA)",
     "intervalDescription": "{repetition} x ({intervalsRepetition} x {time1}/{time2}) ( Récup : {recupTime})",
     "thresholdDescription": "{repetition} x {distance}m ( Récup : {recupTime})",
-    "warmUpDescription": "Échauffement : {warmUpTime}"
+    "warmUpDescription": "Échauffement : {warmUpTime}",
+    "noTraining": "Pas d'entraînement à effectuer aujourd'hui, reposez vous"
 }

@@ -1,13 +1,12 @@
+import { useFormatter } from '@/composables/useFormatter';
 import {
     fourTrainingsDayProgram,
     fiveTrainingsDayProgram,
     sixTrainingsDayProgram,
 } from '@/trainingPrograms/trainingPrograms';
 import { useLocalStorage } from '@vueuse/core';
-import { format, addDays, getDay, subWeeks, parseISO } from 'date-fns';
-import { fr } from 'date-fns/locale';
+import { format, addDays, getDay, subWeeks } from 'date-fns';
 import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
 
 export const useProgram = () => {
     const matchProgram = {
@@ -16,27 +15,20 @@ export const useProgram = () => {
         6: sixTrainingsDayProgram,
     };
 
+    const { humanizeDate } = useFormatter();
+
     const marathonDate = useLocalStorage('marathonDate', null);
     const trainingDays = useLocalStorage('trainingDays', 4);
     const trainingDayChoices = useLocalStorage('trainingDayChoices', [0, 2, 4, 6]);
 
-    const marathonProgramDate = computed(() => {
-        if (!marathonDate.value) return null;
-        const marathonDateObj = parseISO(marathonDate.value);
-        return subWeeks(marathonDateObj, 12);
-    });
-
-    const dayTraining = { type: 'mediumRun', time: '50:00' };
+    const marathonProgramDate = computed(() => subWeeks(marathonDate.value, 12));
 
     const program = computed(() => matchProgram[trainingDays.value]);
 
-    const { locale } = useI18n();
-
-    const formattedMarathonDate = computed(() => {
-        return marathonDate.value
-            ? format(marathonDate.value, 'eeee dd MMMM', locale.value === 'fr' ? { locale: fr } : {})
-            : null;
-    });
+    const formattedMarathonDate = computed(() => (marathonDate.value ? humanizeDate(marathonDate.value) : null));
+    const formattedProgramDate = computed(() =>
+        marathonProgramDate.value ? humanizeDate(marathonProgramDate.value) : null,
+    );
 
     const getNextDay = (dayIndex) => {
         if (!marathonDate.value) return null;
@@ -64,7 +56,7 @@ export const useProgram = () => {
         Object.keys(currentProgram).forEach((weekKey) => {
             const sessions = currentProgram[weekKey];
             sessions.forEach((session) => {
-                const dateStr = format(addDays(Date.now(), dayCounter), 'dd/MM/yyyy');
+                const dateStr = format(addDays(marathonProgramDate.value, dayCounter), 'dd/MM/yyyy');
                 schedule[dateStr] = session;
                 dayCounter += 2;
             });
@@ -78,6 +70,11 @@ export const useProgram = () => {
             }, {});
     });
 
+    const dayTraining = computed(() => {
+        const todayFormatted = format(Date.now(), 'dd/MM/yyyy');
+        return trainingSchedule.value[todayFormatted];
+    });
+
     return {
         dayTraining,
         marathonDate,
@@ -88,5 +85,6 @@ export const useProgram = () => {
         marathonProgramDate,
         getNextDay,
         trainingSchedule,
+        formattedProgramDate,
     };
 };
