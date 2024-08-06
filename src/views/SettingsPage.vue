@@ -1,6 +1,9 @@
 <template>
     <div class="p-4">
-        <h1 class="mb-4 text-3xl font-bold">{{ $t('settings') }}</h1>
+        <h1 class="text-3xl font-bold">{{ $t('settings') }}</h1>
+        <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div>
+        <LanguageSelect />
+        <div class="my-3 text-xl font-bold">{{ $t('marathonProgram') }}</div>
         <div class="mb-2">
             <label>{{ $t('marathonTimeInput') }}</label>
             <input class="w-20" v-model="marathonTime" />
@@ -9,9 +12,9 @@
             <label>{{ $t('bestTimeInput') }}</label>
             <input class="w-20" v-model="bestTime" />
         </div>
-        <div class="mb-2">
+        <div class="mb-2 w-60">
             <label>{{ $t('marathonDate') }}</label>
-            <DatePicker class="w-40 rounded-md" v-model="marathonDate" :enable-time-picker="false" :format="format" />
+            <DatePicker class="rounded-md" v-model="marathonDate" :enable-time-picker="false" :format="format" />
         </div>
         <div class="mb-2">
             <label>{{ $t('trainingDaysInput') }}</label>
@@ -27,17 +30,16 @@
                 <label v-for="(day, index) in daysOfWeek" :key="index" class="flex items-center">
                     <input
                         type="checkbox"
-                        :value="index"
+                        :value="getDayValue(index)"
                         v-model="trainingDayChoices"
-                        :disabled="trainingDayChoices.length >= trainingDays && !trainingDayChoices.includes(index)"
+                        :disabled="
+                            trainingDayChoices.length >= trainingDays &&
+                            !trainingDayChoices.includes(getDayValue(index))
+                        "
                     />
                     <span class="ml-1">{{ $t(`daysOfWeek.${day}`) }}</span>
                 </label>
             </div>
-        </div>
-        <div>
-            <label>{{ $t('languageInput') }}</label>
-            <LanguageSelect />
         </div>
     </div>
 </template>
@@ -54,6 +56,8 @@ import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 const { marathonDate, trainingDays, trainingDayChoices } = useProgram();
 const { marathonTime, bestTime } = usePerformance();
+
+const getDayValue = (index) => (index + 1) % 7;
 
 const daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
