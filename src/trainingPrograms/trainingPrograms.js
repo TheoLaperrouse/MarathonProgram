@@ -33,7 +33,7 @@ export const fourTrainingsDayProgram = {
     ],
     week5: [
         { type: 'mediumRun', time: "60'" },
-        { type: 'thresholdRun', warmUpTime: "1H05'", details: "4x4'ALLURE MARATHON", recupTime: "2'" },
+        { type: 'thresholdRun', warmUpTime: "50'", repetition: 6, distance: 800, recupTime: "2'" },
         { type: 'mediumRun', time: "60'" },
         { type: 'longRun', time: "95'" },
     ],

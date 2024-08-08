@@ -38,12 +38,13 @@
                             time1: training.time1,
                             time2: training.time2,
                             warmUpTime: training.warmUpTime,
+                            recupTime: training.recupTime,
                         })
                     }}</span>
                 </div>
             </template>
             <template v-else-if="type === 'marathon'">
-                <span class="block">{{ $t('marathon', { expectedTime: marathonTime }) }}</span>
+                <span class="block">{{ $t('marathonDescription', { expectedTime: marathonTime }) }}</span>
             </template>
         </template>
     </div>
