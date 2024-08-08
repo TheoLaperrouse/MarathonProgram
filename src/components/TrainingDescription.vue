@@ -4,7 +4,7 @@
         <template v-else>
             <div v-if="formattedDate" class="text-2xl mb-2">{{ formattedDate }} :</div>
             <div class="text-2xl mb-2">{{ $t(type) }} :</div>
-            <template v-if="['slowRun', 'mediumRun', 'longRun'].includes(type)">
+            <template v-if="['mediumRun', 'longRun'].includes(type)">
                 <div>
                     {{
                         $t('slowMediumRunDescription', {
@@ -43,18 +43,7 @@
                 </div>
             </template>
             <template v-else-if="type === 'marathon'">
-                <div>
-                    <span class="block">{{ $t('warmUpDescription', { warmUpTime: training.warmUpTime }) }}</span>
-                    <span class="block">{{
-                        $t('intervalDescription', {
-                            intervalRepetition: training.intervalRepetition,
-                            repetition: training.repetition,
-                            time1: training.time1,
-                            time2: training.time2,
-                            warmUpTime: training.warmUpTime,
-                        })
-                    }}</span>
-                </div>
+                <span class="block">{{ $t('marathon', { expectedTime: marathonTime }) }}</span>
             </template>
         </template>
     </div>
@@ -70,7 +59,7 @@ const props = defineProps({
 });
 const { training, date } = toRefs(props);
 
-const { paces } = usePerformance();
+const { paces, marathonTime } = usePerformance();
 const { humanizeDate, parseDate } = useFormatter();
 
 const formattedDate = computed(() => (date.value ? humanizeDate(parseDate(date.value)) : null));

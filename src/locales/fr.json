@@ -20,7 +20,6 @@
     "saved": "Bien enregistré!",
     "settingsUpdated": "Paramètres mis à jour",
     "cancel": "Annuler",
-    "slowRun": "Jogging lent",
     "mediumRun": "Jogging",
     "thresholdRun": "Seuil",
     "intervalsRun": "Fractionné",
@@ -50,7 +49,7 @@
     "thresholdDescription": "{repetition} x {distance}m ( Récup : {recupTime})",
     "warmUpDescription": "Échauffement : {warmUpTime}",
     "longRun": "Sortie longue",
-    "marathon": "Marathon",
+    "marathon": "Marathon, profites un max et vise ton objectif : {expectedTime}",
     "noTraining": "Pas d'entraînement à effectuer aujourd'hui, reposez vous",
     "marathonProgram": "Informations sur votre programme Marathon"
 }

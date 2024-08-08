@@ -5,7 +5,7 @@ import {
     sixTrainingsDayProgram,
 } from '@/trainingPrograms/trainingPrograms';
 import { useLocalStorage } from '@vueuse/core';
-import { format, addDays, subWeeks, getDay } from 'date-fns';
+import { format, addDays, addMonths, subWeeks, getDay } from 'date-fns';
 import { computed } from 'vue';
 
 export const useProgram = () => {
@@ -17,7 +17,7 @@ export const useProgram = () => {
 
     const { humanizeDate } = useFormatter();
 
-    const marathonDate = useLocalStorage('marathonDate', null);
+    const marathonDate = useLocalStorage('marathonDate', addMonths(new Date(), 3));
     const trainingDays = useLocalStorage('trainingDays', 4);
     const trainingDayChoices = useLocalStorage('trainingDayChoices', [0, 2, 4, 6]);
 

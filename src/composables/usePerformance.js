@@ -19,13 +19,12 @@ export const usePerformance = () => {
     };
 
     const paces = computed(() => ({
-        slowRun: { pace: pacePercentVma(50), percentVMA: 50, color: '#FFCCCC' },
-        mediumRun: { pace: pacePercentVma(70), percentVMA: 70, color: '#FF9999' },
-        longRun: { pace: pacePercentVma(65), percentVMA: 65, color: '#FF7766' },
-        thresholdRun: { pace: pacePercentVma(82.5), percentVMA: 82.5, color: '#FF6666' },
-        intervalsRun: { pace: pacePercentVma(100), percentVMA: 100, color: '#FF3333' },
-        fastIntervalsRun: { pace: pacePercentVma(110), percentVMA: 110, color: '#FF0000' },
-        marathon: { pace: pacePercentVma(70), percentVMA: 70, color: '#FF0000' },
+        mediumRun: { pace: pacePercentVma(70), percentVMA: 70, color: '#009848' },
+        longRun: { pace: pacePercentVma(65), percentVMA: 65, color: '#04C91A' },
+        thresholdRun: { pace: pacePercentVma(82.5), percentVMA: 82.5, color: '#77AABE' },
+        intervalsRun: { pace: pacePercentVma(100), percentVMA: 100, color: '#E12117' },
+        fastIntervalsRun: { pace: pacePercentVma(110), percentVMA: 110, color: '#E12117' },
+        marathon: { pace: pacePercentVma(70), percentVMA: 70, color: '#FFFF00' },
     }));
 
     return { paces, VO2Max, VMAKmH, marathonTime, bestTime, bestTimeSeconds, marathonTimeSeconds };
