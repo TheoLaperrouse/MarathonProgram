@@ -3,7 +3,6 @@
         <h2 class="text-xl font-semibold text-gray-700">{{ $t('bestTimeInput') }}</h2>
         <input
             v-model="bestTime"
-            type="number"
             placeholder="Enter your best 2km time"
             class="w-full rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
