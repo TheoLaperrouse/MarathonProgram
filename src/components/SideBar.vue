@@ -69,7 +69,7 @@ const menuLinks = [
     { to: '/settings', text: 'settings', icon: faGear },
 ];
 
-const githubLink = 'https://github.com/TheoLaperrouse/SportProgram';
+const githubLink = 'https://github.com/TheoLaperrouse/MarathonProgram';
 </script>
 <style scoped>
 .menu {
