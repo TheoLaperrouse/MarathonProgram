@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.4.1...v1.5.0) (2024-08-13)
+
+
+### Features
+
+* checkbox to validate training ([f646ed0](https://github.com/TheoLaperrouse/MarathonProgram/commit/f646ed0e83104b038a146c93744b0d5b3f102ac8))
+
 ## [1.4.1](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.4.0...v1.4.1) (2024-08-13)
 
 # [1.4.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.3.0...v1.4.0) (2024-08-09)
