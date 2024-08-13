@@ -2,7 +2,15 @@
     <div>
         <div v-if="!training">{{ $t('noTraining') }}</div>
         <template v-else>
-            <div v-if="formattedDate" class="text-2xl mb-2">{{ formattedDate }} :</div>
+            <div v-if="formattedDate" class="text-2xl mb-2 flex justify-between">
+                {{ formattedDate }} :
+                <input
+                    class="w-6 h-6"
+                    type="checkbox"
+                    :checked="isTrainingMade(date)"
+                    @change="updateMadeTrainings(date)"
+                />
+            </div>
             <div class="text-2xl mb-2">{{ $t(type) }} :</div>
             <template v-if="['mediumRun', 'longRun'].includes(type)">
                 <div>
@@ -52,6 +60,7 @@
 <script setup>
 import { useFormatter } from '@/composables/useFormatter';
 import { usePerformance } from '@/composables/usePerformance';
+import { useProgram } from '@/composables/useProgram';
 import { computed, toRefs } from 'vue';
 
 const props = defineProps({
@@ -61,6 +70,7 @@ const props = defineProps({
 const { training, date } = toRefs(props);
 
 const { paces, marathonTime } = usePerformance();
+const { isTrainingMade, updateMadeTrainings } = useProgram();
 const { humanizeDate, parseDate } = useFormatter();
 
 const formattedDate = computed(() => (date.value ? humanizeDate(parseDate(date.value)) : null));

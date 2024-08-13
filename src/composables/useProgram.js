@@ -20,6 +20,7 @@ export const useProgram = () => {
     const marathonDate = useLocalStorage('marathonDate', addMonths(new Date(), 3));
     const trainingDays = useLocalStorage('trainingDays', 4);
     const trainingDayChoices = useLocalStorage('trainingDayChoices', [0, 2, 4, 6]);
+    const madeTrainings = useLocalStorage('madeTrainings', []);
 
     const marathonProgramDate = computed(() => subWeeks(marathonDate.value, 12));
 
@@ -71,6 +72,19 @@ export const useProgram = () => {
         return trainingSchedule.value[todayFormatted];
     });
 
+    const updateMadeTrainings = (date) => {
+        const index = madeTrainings.value.indexOf(date);
+        if (index === -1) {
+            madeTrainings.value.push(date);
+        } else {
+            madeTrainings.value.splice(index, 1);
+        }
+    };
+
+    const isTrainingMade = (date) => {
+        return madeTrainings.value.includes(date);
+    };
+
     return {
         dayTraining,
         marathonDate,
@@ -81,5 +95,7 @@ export const useProgram = () => {
         marathonProgramDate,
         trainingSchedule,
         formattedProgramDate,
+        isTrainingMade,
+        updateMadeTrainings,
     };
 };

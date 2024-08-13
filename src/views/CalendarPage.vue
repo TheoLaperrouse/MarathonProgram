@@ -17,8 +17,8 @@
                 :training="training"
                 :date="date"
                 :key="date"
-                class="bg-white rounded-lg shadow p-4 border-4"
-                :style="getStyle(training.type)"
+                class="rounded-lg shadow p-4 border-4"
+                :style="getStyle(training.type, date)"
             />
         </div>
     </div>
@@ -28,7 +28,18 @@ import TrainingDescription from '@/components/TrainingDescription.vue';
 import { usePerformance } from '@/composables/usePerformance';
 import { useProgram } from '@/composables/useProgram';
 
-const { formattedMarathonDate, trainingSchedule, formattedProgramDate } = useProgram();
+const { formattedMarathonDate, trainingSchedule, formattedProgramDate, isTrainingMade } = useProgram();
 const { paces } = usePerformance();
-const getStyle = (type) => ({ borderColor: paces.value[type].color });
+
+const hexToRGBA = (color, opacity) => {
+    const red = parseInt(color.substring(1, 3), 16);
+    const green = parseInt(color.substring(3, 5), 16);
+    const blue = parseInt(color.substring(5, 7), 16);
+    return `rgba(${red},${green},${blue},${opacity})`;
+};
+
+const getStyle = (type, date) => {
+    const borderColor = paces.value[type].color;
+    return { borderColor, backgroundColor: isTrainingMade(date) ? hexToRGBA(borderColor, 0.2) : undefined };
+};
 </script>
