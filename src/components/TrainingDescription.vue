@@ -41,7 +41,7 @@
                     <span class="block">{{ $t('warmUpDescription', { warmUpTime: training.warmUpTime }) }}</span>
                     <span class="block">{{
                         $t('intervalDescription', {
-                            intervalRepetition: training.intervalRepetition,
+                            intervalsRepetition: training.intervalsRepetition,
                             repetition: training.repetition,
                             time1: training.time1,
                             time2: training.time2,
