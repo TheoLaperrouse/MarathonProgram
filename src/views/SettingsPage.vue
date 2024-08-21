@@ -4,11 +4,16 @@
         <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div>
         <LanguageSelect />
         <div class="my-3 text-xl font-bold">{{ $t('stravaTokenInput') }}</div>
-        <div class="flex items-center">
-            <input class="w-60" v-model="stravaToken" />
-            <FontAwesomeIcon v-if="isAthleteLoading" :icon="faSpinner" spin class="text-gray-500 ml-2" />
+        <label>{{ $t('stravaAccessTokenInput') }}</label>
+        <div class="flex items-center mb-2">
+            <input class="w-60" v-model="stravaAccessToken" />
+            <FontAwesomeIcon v-if="isAthletePending" :icon="faSpinner" spin class="text-gray-500 ml-2" />
             <FontAwesomeIcon v-else-if="isValidToken" :icon="faCheck" class="text-green-500 ml-2" />
             <FontAwesomeIcon v-else :icon="faXmark" class="text-red-500 ml-2" />
+        </div>
+        <div>
+            <label>{{ $t('stravaRefreshTokenInput') }}</label>
+            <input class="w-60" v-model="stravaRefreshToken" />
         </div>
         <div class="my-3 text-xl font-bold">{{ $t('marathonProgram') }}</div>
         <div class="mb-2">
@@ -66,7 +71,7 @@ import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 const { marathonDate, trainingDays, trainingDayChoices } = useProgram();
 const { marathonTime, bestTime } = usePerformance();
-const { isAthleteLoading, stravaToken, isValidToken } = useStrava();
+const { isAthletePending, stravaAccessToken, stravaRefreshToken, isValidToken } = useStrava();
 
 const getDayValue = (index) => (index + 1) % 7;
 

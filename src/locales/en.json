@@ -1,5 +1,8 @@
 {
     "dayActivitySummary": "Training done :",
+    "stravaAccessTokenInput": "Access Token :",
+    "stravaRefreshTokenInput": "Refresh Token :",
+    "validateTraining": "Validate Training :",
     "time": "Time",
     "distance": "Distance",
     "date": "Date",

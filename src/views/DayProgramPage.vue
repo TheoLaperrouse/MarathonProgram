@@ -1,10 +1,15 @@
 <template>
     <div class="p-4">
         <h1 class="mb-4 text-3xl font-bold">{{ $t('dayProgram') }}</h1>
-        <h1 class="mb-4 text-2xl font-bold">{{ $t('todayWorkout') }} : {{ humanizeDate(Date.now()) }}</h1>
-        <TrainingDescription class="mb-4" :training="dayTraining" />
-        <div v-if="dayActivity">
-            <h1 class="mb-4 text-2xl font-bold">{{ $t('dayActivitySummary') }}</h1>
+        <div class="card border-blue-500">
+            <h2 class="mb-4 text-2xl font-bold text-blue-800">
+                {{ $t('todayWorkout') }} : {{ humanizeDate(Date.now()) }}
+            </h2>
+            <TrainingDescription class="mb-8" :training="dayTraining" />
+        </div>
+
+        <div v-if="dayActivity" class="card border-green-500">
+            <h2 class="mb-4 text-2xl font-bold text-green-800">{{ $t('dayActivitySummary') }}</h2>
             <Activity :showDate="false" :activity="dayActivity" />
         </div>
     </div>

@@ -1,5 +1,8 @@
 {
     "dayActivitySummary": "Séance effectuée :",
+    "stravaAccessTokenInput": "Access Token :",
+    "stravaRefreshTokenInput": "Refresh Token :",
+    "validateTraining": "Valider la séance :",
     "time": "Temps",
     "distance": "Distance",
     "date": "Date",
@@ -35,7 +38,7 @@
     "longRun": "Sortie longue",
     "marathon": "Marathon",
     "marathonDate": "Date de votre marathon :",
-    "marathonDateInformations": "Votre marathon est prévu le {formattedMarathonDate}.<br/> Votre programme commencera donc le {formattedProgramDate}",
+    "marathonDateInformations": "Votre marathon est prévu le {formattedMarathonDate}.<br/> Votre programme commencera le {formattedProgramDate}.",
     "marathonDescription": "Marathon, profites un max et vise ton objectif : {expectedTime}",
     "marathonProgram": "Informations sur votre programme Marathon",
     "marathonTimeInput": "Temps cible sur le marathon (Ex: 4:00:00) :",

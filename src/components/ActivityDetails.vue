@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="text-2xl font-bold mb-2">{{ activityName }} {{ $t('at') }} {{ activityStartTime }}</h1>
+        <h1 class="text-xl font-bold mb-2">{{ activityName }} {{ $t('at') }} {{ activityStartTime }}</h1>
         <span></span>
         <div>
             <p>
@@ -24,21 +24,40 @@
                     </li>
                 </ul>
             </div>
+            <div class="flex mt-2 items-center">
+                <h3 class="mr-2">{{ $t('validateTraining') }}</h3>
+                <input
+                    class="w-5 h-5"
+                    type="checkbox"
+                    :checked="isTrainingMade(date)"
+                    @change="updateMadeTrainings(date)"
+                />
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 import { useFormatter } from '@/composables/useFormatter';
-import { useStravaActivity } from '@/composables/useStravaActivity';
-import { toRefs } from 'vue';
+import { useProgram } from '@/composables/useProgram';
+import { useStravaActivity } from '@/composables/useStrava';
+import { parseISO, format } from 'date-fns';
+import { toRefs, computed } from 'vue';
 
 const props = defineProps({
     activity: Object,
     showDate: Boolean,
 });
 const { formatSecondsToMinutes } = useFormatter();
+const { isTrainingMade, updateMadeTrainings } = useProgram();
+
 const { activity, showDate } = toRefs(props);
+
 const { activityName, activityTime, activityAveragePace, activityDistance, activityDate, activityStartTime } =
     useStravaActivity(activity);
+
+const date = computed(() => {
+    const dateISO = parseISO(activity.value.start_date_local);
+    return format(dateISO, 'dd/MM/yyyy');
+});
 </script>

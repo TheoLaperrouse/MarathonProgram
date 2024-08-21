@@ -1,16 +1,37 @@
+import { useFormatter } from '@/composables/useFormatter';
 import { useGetAthleteData, useGetActivities } from '@/composables/useStravaQueries';
 import { useLocalStorage } from '@vueuse/core';
 import { parseISO, isToday } from 'date-fns';
 import { computed } from 'vue';
 
+export const useStravaActivity = (activity) => {
+    const { getHourFromDate, formatSecondsToMinutes, humanizeDate } = useFormatter();
+    const activityName = computed(() => activity.value.name);
+    const activityTime = computed(() => formatSecondsToMinutes(activity.value.moving_time));
+    const activityDistance = computed(() => (activity.value.distance / 1000).toFixed(3));
+    const activityAveragePace = computed(() =>
+        formatSecondsToMinutes(activity.value.moving_time / activityDistance.value),
+    );
+    const activityDate = computed(() => humanizeDate(activity.value.start_date_local));
+    const activityStartTime = computed(() => getHourFromDate(activity.value.start_date_local));
+
+    return { activityName, activityAveragePace, activityTime, activityDistance, activityDate, activityStartTime };
+};
+
 export const useStrava = () => {
-    const stravaToken = useLocalStorage('stravaToken', '');
+    const stravaAccessToken = useLocalStorage('stravaAccessToken', '');
+    const stravaRefreshToken = useLocalStorage('stravaRefreshToken', '');
 
-    const { data: athleteData, isLoading: isAthleteLoading } = useGetAthleteData(stravaToken);
-    const { data: activities, isLoading: isActivitiesLoading } = useGetActivities(stravaToken, { per_page: 10 });
+    const {
+        data: athleteData,
+        isPending: isAthletePending,
+        isError: isAthleteError,
+    } = useGetAthleteData(stravaAccessToken);
+    const { data: activities, isPending: isActivitiesPending } = useGetActivities(stravaAccessToken, { per_page: 10 });
 
-    const isValidToken = computed(() => !!athleteData.value);
-
+    const isValidToken = computed(() => {
+        return !isAthleteError.value && !!athleteData.value;
+    });
     const fullName = computed(() =>
         athleteData.value ? `${athleteData.value.firstname} ${athleteData.value.lastname}` : '',
     );
@@ -21,10 +42,11 @@ export const useStrava = () => {
 
     return {
         athleteData,
-        isAthleteLoading,
+        isAthletePending,
         activities,
-        isActivitiesLoading,
-        stravaToken,
+        isActivitiesPending,
+        stravaAccessToken,
+        stravaRefreshToken,
         fullName,
         dayActivity,
         isValidToken,

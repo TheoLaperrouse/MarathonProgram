@@ -62,3 +62,43 @@ export async function getActivities(accessToken, params = {}) {
         throw new Error(`Failed to fetch activities: ${error.message}`);
     }
 }
+
+/**
+ * Retrieve a new access token using a refresh token.
+ *
+ * @param {string} clientId - The client ID of your Strava application
+ * @param {string} clientSecret - The client secret of your Strava application
+ * @param {string} refreshToken - The refresh token to use for obtaining a new access token
+ * @return {Promise<Object>} - The new token data containing access_token, refresh_token, and expires_at
+ * @throws {Error} - If the fetch operation fails
+ */
+export async function refreshAccessToken(refreshToken) {
+    const url = 'https://www.strava.com/oauth/token';
+
+    const params = {
+        client_id: process?.env?.STRAVA_CLIENT_ID,
+        client_secret: process?.env?.STRAVA_CLIENT_SECRET,
+        refresh_token: refreshToken,
+        grant_type: 'refresh_token',
+    };
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify(params),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw new Error(`Failed to refresh access token: ${error.message}`);
+    }
+}
