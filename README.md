@@ -13,6 +13,8 @@ yarn
 yarn start
 ```
 
+`yarn husky` to set the commit hooks
+
 ## Docker
 
 Pour déployer l'application avec docker :
@@ -20,4 +22,11 @@ Pour déployer l'application avec docker :
 ```sh
 docker build -t marathon-program .
 docker run -p 8080:80 marathon-program
+```
+
+## Variable d'environnement
+
+```
+STRAVA_CLIENT_ID=""
+STRAVA_CLIENT_SECRET=""
 ```
