@@ -1,6 +1,8 @@
 {
     "dayActivitySummary": "Training done :",
     "stravaAccessTokenInput": "Access Token :",
+    "garminAccessTokenInput": "Access Token :",
+    "exportTraining": "Export training to Garmin",
     "stravaRefreshTokenInput": "Refresh Token :",
     "validateTraining": "Validate Training :",
     "time": "Time",
@@ -55,7 +57,8 @@
     "settingsUpdated": "Settings updated",
     "slowMediumRunDescription": "{time} at {pace}/km ({percentVMA}% VMA)",
     "start": "Go to settings",
-    "stravaTokenInput": "Strava Token",
+    "stravaToken": "Strava Token",
+    "garminToken": "Garmin Token",
     "threshold": "Threshold",
     "thresholdDescription": "{repetition} x {distance}m (Recovery: {recupTime})",
     "thresholdRun": "Threshold",

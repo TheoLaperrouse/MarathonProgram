@@ -9,13 +9,15 @@
                     <th class="border border-gray-300 px-4 py-2">{{ $t('runType') }}</th>
                     <th class="border border-gray-300 px-4 py-2">{{ $t('percentVMA') }}</th>
                     <th class="border border-gray-300 px-4 py-2">{{ $t('pace') }}</th>
+                    <th class="border border-gray-300 px-4 py-2">{{ $t('cardiacFrequency') }}</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="({ pace, percentVMA }, type) in paces" :key="type">
+                <tr v-for="({ pace, percentVMA, cardiacFrequency }, type) in paces" :key="type">
                     <td class="border border-gray-300 px-4 py-2">{{ $t(type) }}</td>
-                    <td class="border border-gray-300 px-4 py-2 text-right">{{ percentVMA }} %</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">{{ percentVMA }}</td>
                     <td class="border border-gray-300 px-4 py-2 text-right">{{ pace }} min/km</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">{{ cardiacFrequency }} BPM</td>
                 </tr>
             </tbody>
         </table>

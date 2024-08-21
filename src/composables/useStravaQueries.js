@@ -1,8 +1,9 @@
 import { getActivities, getAthleteData } from '@/services/strava.service';
 import { useQuery } from '@tanstack/vue-query';
+import { computed } from 'vue';
 
 export const useGetActivities = (accessToken, params = {}) => {
-    const isEnabled = () => !!accessToken.value;
+    const isEnabled = computed(() => !!accessToken.value);
     return useQuery({
         queryKey: ['activities', accessToken, params],
         queryFn: () => getActivities(accessToken.value, params),
@@ -13,7 +14,7 @@ export const useGetActivities = (accessToken, params = {}) => {
 };
 
 export const useGetAthleteData = (accessToken) => {
-    const isEnabled = () => !!accessToken.value;
+    const isEnabled = computed(() => !!accessToken.value);
     return useQuery({
         queryKey: ['athleteData', accessToken],
         queryFn: () => getAthleteData(accessToken.value),

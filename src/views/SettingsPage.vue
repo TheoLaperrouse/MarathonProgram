@@ -1,20 +1,6 @@
 <template>
     <div class="p-4">
         <h1 class="text-3xl font-bold">{{ $t('settings') }}</h1>
-        <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div>
-        <LanguageSelect />
-        <div class="my-3 text-xl font-bold">{{ $t('stravaTokenInput') }}</div>
-        <label>{{ $t('stravaAccessTokenInput') }}</label>
-        <div class="flex items-center mb-2">
-            <input class="w-60" v-model="stravaAccessToken" />
-            <FontAwesomeIcon v-if="isAthletePending" :icon="faSpinner" spin class="text-gray-500 ml-2" />
-            <FontAwesomeIcon v-else-if="isValidToken" :icon="faCheck" class="text-green-500 ml-2" />
-            <FontAwesomeIcon v-else :icon="faXmark" class="text-red-500 ml-2" />
-        </div>
-        <div>
-            <label>{{ $t('stravaRefreshTokenInput') }}</label>
-            <input class="w-60" v-model="stravaRefreshToken" />
-        </div>
         <div class="my-3 text-xl font-bold">{{ $t('marathonProgram') }}</div>
         <div class="mb-2">
             <label>{{ $t('marathonTimeInput') }}</label>
@@ -53,6 +39,30 @@
                 </label>
             </div>
         </div>
+        <div class="my-3 text-xl font-bold">{{ $t('stravaToken') }}</div>
+        <label>{{ $t('stravaAccessTokenInput') }}</label>
+        <div class="flex items-center mb-2">
+            <input class="w-60" v-model="stravaAccessToken" />
+            <FontAwesomeIcon
+                v-if="stravaAccessToken && isAthletePending"
+                :icon="faSpinner"
+                spin
+                class="text-gray-500 ml-2"
+            />
+            <FontAwesomeIcon v-else-if="isValidToken" :icon="faCheck" class="text-green-500 ml-2" />
+            <FontAwesomeIcon v-else :icon="faXmark" class="text-red-500 ml-2" />
+        </div>
+        <div>
+            <label>{{ $t('stravaRefreshTokenInput') }}</label>
+            <input class="w-60" v-model="stravaRefreshToken" />
+        </div>
+        <!-- <div class="my-3 text-xl font-bold">{{ $t('garminToken') }}</div>
+        <label>{{ $t('garminAccessTokenInput') }}</label>
+        <div class="flex items-center mb-2">
+            <input class="w-60" v-model="garminAccessToken" />
+        </div>
+        <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div> -->
+        <LanguageSelect />
     </div>
 </template>
 
