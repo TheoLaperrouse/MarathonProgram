@@ -1,4 +1,13 @@
 {
+    "dayActivitySummary": "Séance effectuée :",
+    "time": "Temps",
+    "distance": "Distance",
+    "date": "Date",
+    "startTime": "Heure de début",
+    "laps": "Tours",
+    "lap": "Tour",
+    "in": "en",
+    "at": "à",
     "bestTimeInput": "Meilleur temps sur 2 km (Ex: 7:45) :",
     "calendar": "Calendrier",
     "cancel": "Annuler",
@@ -44,6 +53,7 @@
     "settingsUpdated": "Paramètres mis à jour",
     "slowMediumRunDescription": "{time} à {pace}/km ({percentVMA}% VMA)",
     "start": "Aller au paramètres",
+    "stravaTokenInput": "Token Strava",
     "threshold": "Seuil",
     "thresholdDescription": "{repetition} x {distance}m ( Récup : {recupTime})",
     "thresholdRun": "Seuil",
@@ -52,5 +62,6 @@
     "vma": "Récap VMA",
     "vmaInformations": "Informations sur vos allures selon le pourcentage de VMA :",
     "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min",
-    "warmUpDescription": "Échauffement : {warmUpTime}"
+    "warmUpDescription": "Échauffement : {warmUpTime}",
+    "welcomeTitle": "Bonjour {fullName},"
 }

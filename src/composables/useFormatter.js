@@ -14,6 +14,8 @@ export const useFormatter = () => {
         return parse(dateStr, 'dd/MM/yyyy', new Date(), { locale: fr });
     };
 
+    const getHourFromDate = (dateStr) => dateStr.slice(11, 16);
+
     const humanizeDate = (date) =>
         capitalize(format(date, 'eeee dd MMMM', locale.value === 'fr' ? { locale: fr } : {}));
 
@@ -39,5 +41,13 @@ export const useFormatter = () => {
         return `${formatNumber(minutes, 2)}'${formatNumber(remainingSeconds, 2)}"`;
     };
 
-    return { formatter, humanizeDate, parseDate, formatNumber, convertTimeToSeconds, formatSecondsToMinutes };
+    return {
+        formatter,
+        humanizeDate,
+        parseDate,
+        formatNumber,
+        convertTimeToSeconds,
+        formatSecondsToMinutes,
+        getHourFromDate,
+    };
 };

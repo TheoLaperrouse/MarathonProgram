@@ -3,6 +3,13 @@
         <h1 class="text-3xl font-bold">{{ $t('settings') }}</h1>
         <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div>
         <LanguageSelect />
+        <div class="my-3 text-xl font-bold">{{ $t('stravaTokenInput') }}</div>
+        <div class="flex items-center">
+            <input class="w-60" v-model="stravaToken" />
+            <FontAwesomeIcon v-if="isAthleteLoading" :icon="faSpinner" spin class="text-gray-500 ml-2" />
+            <FontAwesomeIcon v-else-if="isValidToken" :icon="faCheck" class="text-green-500 ml-2" />
+            <FontAwesomeIcon v-else :icon="faXmark" class="text-red-500 ml-2" />
+        </div>
         <div class="my-3 text-xl font-bold">{{ $t('marathonProgram') }}</div>
         <div class="mb-2">
             <label>{{ $t('marathonTimeInput') }}</label>
@@ -48,6 +55,9 @@
 import LanguageSelect from '@/components/LanguageSelect.vue';
 import { usePerformance } from '@/composables/usePerformance';
 import { useProgram } from '@/composables/useProgram';
+import { useStrava } from '@/composables/useStrava';
+import { faCheck, faXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import DatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { computed, watch } from 'vue';
@@ -56,6 +66,7 @@ import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 const { marathonDate, trainingDays, trainingDayChoices } = useProgram();
 const { marathonTime, bestTime } = usePerformance();
+const { isAthleteLoading, stravaToken, isValidToken } = useStrava();
 
 const getDayValue = (index) => (index + 1) % 7;
 

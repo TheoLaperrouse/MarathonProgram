@@ -1,4 +1,12 @@
 {
+    "dayActivitySummary": "Training done :",
+    "time": "Time",
+    "distance": "Distance",
+    "date": "Date",
+    "startTime": "Start Time",
+    "laps": "Laps",
+    "lap": "Lap",
+    "in": "in",
     "bestTimeInput": "Best time on 2 km (Ex: 7:45):",
     "calendar": "Calendar",
     "cancel": "Cancel",
@@ -44,6 +52,7 @@
     "settingsUpdated": "Settings updated",
     "slowMediumRunDescription": "{time} at {pace}/km ({percentVMA}% VMA)",
     "start": "Go to settings",
+    "stravaTokenInput": "Strava Token",
     "threshold": "Threshold",
     "thresholdDescription": "{repetition} x {distance}m (Recovery: {recupTime})",
     "thresholdRun": "Threshold",
@@ -52,5 +61,6 @@
     "vma": "VMA Summary",
     "vmaInformations": "Information on your paces according to the percentage of VMA:",
     "VO2MaxInformations": "Your VO2Max is {VO2Max} ml/kg/min",
-    "warmUpDescription": "Warm-up: {warmUpTime}"
+    "warmUpDescription": "Warm-up: {warmUpTime}",
+    "welcomeTitle": "Hello {fullName}"
 }
