@@ -1,3 +1,16 @@
+# [1.6.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.5.0...v1.6.0) (2024-08-21)
+
+
+### Bug Fixes
+
+* fix a typo in intervalsDescription ([5704480](https://github.com/TheoLaperrouse/MarathonProgram/commit/5704480d861b967d6471f7478f013413690574f2))
+
+
+### Features
+
+* add a stravaRefreshToken for strava API / some visual changes on DayProgramPage ([6c393c5](https://github.com/TheoLaperrouse/MarathonProgram/commit/6c393c51e21c2401c0ab3ed606e073c87816539d))
+* connect with strava API ([ab3d792](https://github.com/TheoLaperrouse/MarathonProgram/commit/ab3d792840a027531f6ebad054d3b6a1b110ddba))
+
 # [1.5.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.4.1...v1.5.0) (2024-08-13)
 
 
