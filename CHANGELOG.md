@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.6.0...v1.6.1) (2024-08-21)
+
+
+### Bug Fixes
+
+* fix netlify redirection ([89263ee](https://github.com/TheoLaperrouse/MarathonProgram/commit/89263ee93917983fcfd4f84899abe89291ea418e))
+
 # [1.6.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.5.0...v1.6.0) (2024-08-21)
 
 
