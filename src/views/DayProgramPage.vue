@@ -10,7 +10,7 @@
 
         <div v-if="dayActivity" class="card border-green-500">
             <h2 class="mb-4 text-2xl font-bold text-green-800">{{ $t('dayActivitySummary') }}</h2>
-            <Activity :showDate="false" :activity="dayActivity" />
+            <Activity :show-date="false" :show-checkbox="!!dayTraining" :activity="dayActivity" />
         </div>
     </div>
 </template>

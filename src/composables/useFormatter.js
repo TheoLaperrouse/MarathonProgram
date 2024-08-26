@@ -41,6 +41,13 @@ export const useFormatter = () => {
         return `${formatNumber(minutes, 2)}'${formatNumber(remainingSeconds, 2)}"`;
     };
 
+    const hexToRGBA = (color, opacity) => {
+        const red = parseInt(color.substring(1, 3), 16);
+        const green = parseInt(color.substring(3, 5), 16);
+        const blue = parseInt(color.substring(5, 7), 16);
+        return `rgba(${red},${green},${blue},${opacity})`;
+    };
+
     return {
         formatter,
         humanizeDate,
@@ -49,5 +56,6 @@ export const useFormatter = () => {
         convertTimeToSeconds,
         formatSecondsToMinutes,
         getHourFromDate,
+        hexToRGBA,
     };
 };

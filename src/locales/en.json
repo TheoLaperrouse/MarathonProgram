@@ -12,6 +12,7 @@
     "laps": "Laps",
     "lap": "Lap",
     "in": "in",
+    "at": " at",
     "bestTimeInput": "Best time on 2 km (Ex: 7:45):",
     "calendar": "Calendar",
     "cancel": "Cancel",
@@ -48,14 +49,13 @@
     "noSession": "No session scheduled for today.",
     "noTraining": "No training to do today, rest",
     "pace": "Pace",
-    "percentVMA": "% VMA",
     "runType": "Run type",
     "save": "Save",
     "saved": "Saved!",
     "selectTrainingDays": "Select training days",
     "settings": "Settings",
     "settingsUpdated": "Settings updated",
-    "slowMediumRunDescription": "{time} at {pace}/km ({percentVMA}% VMA)",
+    "slowMediumRunDescription": "{time} at {pace}/km",
     "start": "Go to settings",
     "stravaToken": "Strava Token",
     "garminToken": "Garmin Token",
@@ -68,5 +68,6 @@
     "vmaInformations": "Information on your paces according to the percentage of VMA:",
     "VO2MaxInformations": "Your VO2Max is {VO2Max} ml/kg/min",
     "warmUpDescription": "Warm-up: {warmUpTime}",
-    "welcomeTitle": "Hello {fullName}"
+    "welcomeTitle": "Hello {fullName}",
+    "activities": "Activities"
 }

@@ -25,18 +25,13 @@
 </template>
 <script setup>
 import TrainingDescription from '@/components/TrainingDescription.vue';
+import { useFormatter } from '@/composables/useFormatter';
 import { usePerformance } from '@/composables/usePerformance';
 import { useProgram } from '@/composables/useProgram';
 
 const { formattedMarathonDate, trainingSchedule, formattedProgramDate, isTrainingMade } = useProgram();
 const { paces } = usePerformance();
-
-const hexToRGBA = (color, opacity) => {
-    const red = parseInt(color.substring(1, 3), 16);
-    const green = parseInt(color.substring(3, 5), 16);
-    const blue = parseInt(color.substring(5, 7), 16);
-    return `rgba(${red},${green},${blue},${opacity})`;
-};
+const { hexToRGBA } = useFormatter();
 
 const getStyle = (type, date) => {
     const borderColor = paces.value[type].color;

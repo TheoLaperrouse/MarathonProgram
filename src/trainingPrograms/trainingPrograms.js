@@ -22,7 +22,7 @@ export const fourTrainingsDayProgram = {
     week3: [
         { type: 'mediumRun', time: "60'" },
         { type: 'thresholdRun', warmUpTime: "30'", repetition: 7, distance: 700, recupTime: '2\'30"' },
-        { type: 'thresholdRun', warmUpTime: "30'", repetition: 8, distance: 200, recupTime: '2\'30"' },
+        { type: 'thresholdRun', warmUpTime: "30'", repetition: 8, distance: 200, recupTime: '1\'30"' },
         { type: 'longRun', time: "90'" },
     ],
     week4: [

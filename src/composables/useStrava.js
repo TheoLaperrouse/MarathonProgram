@@ -27,18 +27,17 @@ export const useStrava = () => {
         isPending: isAthletePending,
         isError: isAthleteError,
     } = useGetAthleteData(stravaAccessToken);
-    const { data: activities, isPending: isActivitiesPending } = useGetActivities(stravaAccessToken, { per_page: 10 });
 
-    const isValidToken = computed(() => {
-        return !isAthleteError.value && !!athleteData.value;
-    });
+    const { data: activities, isPending: isActivitiesPending } = useGetActivities(stravaAccessToken, { per_page: 30 });
+
+    const isValidStrava = computed(() => stravaAccessToken.value && !!athleteData.value && !isAthleteError.value);
     const fullName = computed(() =>
         athleteData.value ? `${athleteData.value.firstname} ${athleteData.value.lastname}` : '',
     );
 
-    const dayActivity = computed(() => {
-        return activities.value?.filter((activity) => isToday(parseISO(activity.start_date_local)))[0];
-    });
+    const dayActivity = computed(
+        () => activities.value?.filter((activity) => isToday(parseISO(activity.start_date_local)))[0],
+    );
 
     return {
         athleteData,
@@ -49,6 +48,6 @@ export const useStrava = () => {
         stravaRefreshToken,
         fullName,
         dayActivity,
-        isValidToken,
+        isValidStrava,
     };
 };

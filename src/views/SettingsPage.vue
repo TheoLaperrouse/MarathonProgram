@@ -49,7 +49,7 @@
                 spin
                 class="text-gray-500 ml-2"
             />
-            <FontAwesomeIcon v-else-if="isValidToken" :icon="faCheck" class="text-green-500 ml-2" />
+            <FontAwesomeIcon v-else-if="isValidStrava" :icon="faCheck" class="text-green-500 ml-2" />
             <FontAwesomeIcon v-else :icon="faXmark" class="text-red-500 ml-2" />
         </div>
         <div>
@@ -60,8 +60,8 @@
         <label>{{ $t('garminAccessTokenInput') }}</label>
         <div class="flex items-center mb-2">
             <input class="w-60" v-model="garminAccessToken" />
-        </div>
-        <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div> -->
+        </div> -->
+        <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div>
         <LanguageSelect />
     </div>
 </template>
@@ -81,7 +81,7 @@ import { useI18n } from 'vue-i18n';
 const { locale } = useI18n();
 const { marathonDate, trainingDays, trainingDayChoices } = useProgram();
 const { marathonTime, bestTime } = usePerformance();
-const { isAthletePending, stravaAccessToken, stravaRefreshToken, isValidToken } = useStrava();
+const { isAthletePending, stravaAccessToken, stravaRefreshToken, isValidStrava } = useStrava();
 
 const getDayValue = (index) => (index + 1) % 7;
 

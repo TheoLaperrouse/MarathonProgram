@@ -1,8 +1,10 @@
 <template>
     <div>
-        <div v-if="!training">{{ $t('noTraining') }}</div>
+        <div v-if="!training">
+            {{ $t('noTraining') }}
+        </div>
         <template v-else>
-            <div v-if="formattedDate" class="text-2xl mb-2 flex justify-between">
+            <div v-if="formattedDate" class="text-2xl mb-2 flex justify-between bold">
                 {{ formattedDate }} :
                 <div class="flex items-center">
                     <button
@@ -21,14 +23,15 @@
                     />
                 </div>
             </div>
-            <div class="text-2xl mb-2">{{ $t(type) }} :</div>
+            <div class="text-xl mb-2">
+                <b>{{ $t(type) }}</b> ({{ paces[type].percentVMA }}% VMA / {{ paces[type].cardiacFrequency }} BPM) :
+            </div>
             <template v-if="['mediumRun', 'longRun'].includes(type)">
                 <div>
                     {{
                         $t('slowMediumRunDescription', {
                             time: training.time,
                             pace: paces[type].pace,
-                            percentVMA: paces[type].percentVMA,
                         })
                     }}
                 </div>

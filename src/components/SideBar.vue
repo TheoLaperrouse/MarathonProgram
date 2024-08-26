@@ -44,7 +44,9 @@
 </template>
 
 <script setup>
+import { useStrava } from '@/composables/useStrava';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faStrava } from '@fortawesome/free-brands-svg-icons';
 import {
     faHome,
     faCalendar,
@@ -56,18 +58,21 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useLocalStorage } from '@vueuse/core';
+import { computed } from 'vue';
 
 const isSidebarOpen = useLocalStorage('isSidebarOpen', true);
-
 const toggleSidebar = () => (isSidebarOpen.value = !isSidebarOpen.value);
 
-const menuLinks = [
+const { stravaAccessToken } = useStrava();
+
+const menuLinks = computed(() => [
     { to: '/', text: 'home', icon: faHome },
     { to: '/day-program', text: 'dayProgram', icon: faPersonRunning },
     { to: '/calendar', text: 'calendar', icon: faCalendar },
+    ...(stravaAccessToken.value ? [{ to: '/activities', text: 'activities', icon: faStrava }] : []),
     { to: '/vma', text: 'vma', icon: faStopwatch },
     { to: '/settings', text: 'settings', icon: faGear },
-];
+]);
 
 const githubLink = 'https://github.com/TheoLaperrouse/MarathonProgram';
 </script>

@@ -48,9 +48,4 @@ select {
     -moz-appearance: none;
     appearance: none;
 }
-
-i {
-    font-size: 1rem;
-    vertical-align: middle;
-}
 </style>

@@ -1,8 +1,12 @@
 <template>
     <div>
-        <h1 class="text-xl font-bold mb-2">{{ activityName }} {{ $t('at') }} {{ activityStartTime }}</h1>
-        <span></span>
+        <h1 class="text-xl font-bold mb-2">
+            {{ activityName }}<span v-if="!showDate"> {{ $t('at') }} {{ activityStartTime }}</span>
+        </h1>
         <div>
+            <p v-if="showDate">
+                <strong>{{ $t('date') }}:</strong> {{ activityDate }}
+            </p>
             <p>
                 <strong>{{ $t('time') }}:</strong> {{ activityTime }}
             </p>
@@ -11,9 +15,6 @@
             </p>
             <p>
                 <strong>{{ $t('pace') }}:</strong> {{ activityAveragePace }} /km
-            </p>
-            <p v-if="showDate">
-                <strong>{{ $t('date') }}:</strong> {{ activityDate }}
             </p>
             <div v-if="activity.laps && activity.laps.length">
                 <h3 class="text-lg font-medium mt-4">{{ $t('laps') }}</h3>
@@ -24,7 +25,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex mt-2 items-center">
+            <div v-if="showCheckbox" class="flex mt-2 items-center">
                 <h3 class="mr-2">{{ $t('validateTraining') }}</h3>
                 <input
                     class="w-5 h-5"
@@ -46,13 +47,13 @@ import { toRefs, computed } from 'vue';
 
 const props = defineProps({
     activity: Object,
-    showDate: Boolean,
+    showDate: { type: Boolean, default: true },
+    showCheckbox: { type: Boolean, default: false },
 });
 const { formatSecondsToMinutes } = useFormatter();
 const { isTrainingMade, updateMadeTrainings } = useProgram();
 
-const { activity, showDate } = toRefs(props);
-
+const { activity, showDate, showCheckbox } = toRefs(props);
 const { activityName, activityTime, activityAveragePace, activityDistance, activityDate, activityStartTime } =
     useStravaActivity(activity);
 

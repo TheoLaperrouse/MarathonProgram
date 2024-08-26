@@ -1,5 +1,6 @@
+import Activities from '@/views/ActivitiesPage.vue';
 import Calendar from '@/views/CalendarPage.vue';
-import DailyProgram from '@/views/DayProgramPage.vue';
+import DayProgram from '@/views/DayProgramPage.vue';
 import Home from '@/views/HomePage.vue';
 import Settings from '@/views/SettingsPage.vue';
 import VMA from '@/views/VMAPage.vue';
@@ -15,13 +16,26 @@ const router = createRouter({
         },
         {
             path: '/day-program',
-            name: 'daily-program',
-            component: DailyProgram,
+            name: 'day-program',
+            component: DayProgram,
         },
         {
             path: '/calendar',
             name: 'calendar',
             component: Calendar,
+        },
+        {
+            path: '/activities',
+            name: 'activities',
+            component: Activities,
+            beforeEnter: (to, from, next) => {
+                const token = localStorage.getItem('stravaAccessToken');
+                if (token) {
+                    next();
+                } else {
+                    next('/');
+                }
+            },
         },
         {
             path: '/vma',
