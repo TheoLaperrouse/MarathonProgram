@@ -13,7 +13,7 @@ export const usePerformance = () => {
     const bestTimeSeconds = computed(() => convertTimeToSeconds(bestTime.value));
     const marathonTimeSeconds = computed(() => convertTimeToSeconds(marathonTime.value));
     const VMAKmH = computed(() => (1 / (bestTimeSeconds.value / 2)) * 3600);
-    const VO2Max = computed(() => formatter.value.format(VMAKmH.value * 3.6));
+    const VO2Max = computed(() => formatter.value.format(VMAKmH.value * 3.5));
 
     const getPaceByPercentVMA = (percent) => {
         const speed = VMAKmH.value * (percent / 100);
