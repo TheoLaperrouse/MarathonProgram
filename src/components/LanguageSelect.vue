@@ -1,5 +1,5 @@
 <template>
-    <div class="relative inline-block w-40">
+    <div class="relative w-40">
         <select v-model="selectedLanguage" class="w-full px-4 py-2">
             <option v-for="lang in languages" :key="lang.lang" :value="lang.lang">
                 {{ lang.name }}

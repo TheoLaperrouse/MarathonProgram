@@ -63,6 +63,10 @@
         </div> -->
         <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div>
         <LanguageSelect />
+        <div class="my-3 text-xl font-bold">{{ $t('deleteProgram') }} :</div>
+        <button @click="deleteProgram" class="rounded-lg bg-red-600 px-4 py-3 text-white hover:bg-red-700">
+            <FontAwesomeIcon :icon="faTrashCan" />
+        </button>
     </div>
 </template>
 
@@ -71,14 +75,15 @@ import LanguageSelect from '@/components/LanguageSelect.vue';
 import { usePerformance } from '@/composables/usePerformance';
 import { useProgram } from '@/composables/useProgram';
 import { useStrava } from '@/composables/useStrava';
-import { faCheck, faXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark, faSpinner, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import DatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
+import Swal from 'sweetalert2';
 import { computed, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const { marathonDate, trainingDays, trainingDayChoices } = useProgram();
 const { marathonTime, bestTime } = usePerformance();
 const { isAthletePending, stravaAccessToken, stravaRefreshToken, isValidStrava } = useStrava();
@@ -86,6 +91,30 @@ const { isAthletePending, stravaAccessToken, stravaRefreshToken, isValidStrava }
 const getDayValue = (index) => (index + 1) % 7;
 
 const daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+const deleteProgram = () => {
+    Swal.fire({
+        title: t('deleteProgram'),
+        text: t('confirmDelete'),
+        icon: 'warning',
+        confirmButtonText: t('confirmButton'),
+        showCancelButton: true,
+        cancelButtonText: t('cancelButton'),
+        reverseButtons: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            localStorage.clear();
+            Swal.fire({
+                title: t('deleted'),
+                text: t('confirmDeletion'),
+                icon: 'success',
+                timer: 2000,
+            });
+        }
+    });
+};
 
 watch(trainingDays, (newVal) => {
     if (trainingDayChoices.value.length > newVal) {

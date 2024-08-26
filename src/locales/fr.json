@@ -70,5 +70,11 @@
     "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min",
     "warmUpDescription": "Échauffement : {warmUpTime}",
     "welcomeTitle": "Bonjour {fullName},",
-    "activities": "Activités"
+    "activities": "Activités",
+    "deleteProgram": "Supprimer toutes vos informations",
+    "confirmDelete": "Êtes vous sûr de vouloir tout supprimer?",
+    "confirmButton": "Oui",
+    "cancelButton": "Non",
+    "deleted": "Supprimé!",
+    "confirmDeletion": "Vos informations ont bien été supprimées"
 }
