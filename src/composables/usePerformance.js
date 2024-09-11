@@ -3,7 +3,7 @@ import { useLocalStorage } from '@vueuse/core';
 import { computed } from 'vue';
 
 export const usePerformance = () => {
-    const { formatter, formatSecondsToMinutes, convertTimeToSeconds } = useFormatter();
+    const { formatSecondsToMinutes, convertTimeToSeconds } = useFormatter();
 
     const cardiacFrequencyMax = 220;
 
@@ -13,7 +13,7 @@ export const usePerformance = () => {
     const bestTimeSeconds = computed(() => convertTimeToSeconds(bestTime.value));
     const marathonTimeSeconds = computed(() => convertTimeToSeconds(marathonTime.value));
     const VMAKmH = computed(() => (1 / (bestTimeSeconds.value / 2)) * 3600);
-    const VO2Max = computed(() => formatter.value.format(VMAKmH.value * 3.5));
+    const VO2Max = computed(() => parseInt(VMAKmH.value * 3.5));
 
     const getPaceByPercentVMA = (percent) => {
         const speed = VMAKmH.value * (percent / 100);
