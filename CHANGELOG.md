@@ -1,3 +1,16 @@
+# [1.8.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.7.0...v1.8.0) (2024-09-11)
+
+
+### Bug Fixes
+
+* fix some text in VMAPage ([20c9d1f](https://github.com/TheoLaperrouse/MarathonProgram/commit/20c9d1ff40c0038f0400871c8473877db7c52d86))
+
+
+### Features
+
+* add 5 and 6 training days program ([20a130f](https://github.com/TheoLaperrouse/MarathonProgram/commit/20a130fd09127548ac7005bd297863895a9d271e))
+* filter Run Strava activities since start of program ([62c89d3](https://github.com/TheoLaperrouse/MarathonProgram/commit/62c89d31e202a7f185214e2406ce39290cb0e94e))
+
 # [1.7.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.6.1...v1.7.0) (2024-08-26)
 
 
