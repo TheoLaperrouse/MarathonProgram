@@ -1,11 +1,13 @@
 import { useFormatter } from '@/composables/useFormatter';
+import { useProgram } from '@/composables/useProgram';
 import { useGetAthleteData, useGetActivities } from '@/composables/useStravaQueries';
 import { useLocalStorage } from '@vueuse/core';
-import { parseISO, isToday } from 'date-fns';
+import { parseISO, isToday, subMonths } from 'date-fns';
 import { computed } from 'vue';
 
 export const useStravaActivity = (activity) => {
     const { getHourFromDate, formatSecondsToMinutes, humanizeDate } = useFormatter();
+
     const activityName = computed(() => activity.value.name);
     const activityTime = computed(() => formatSecondsToMinutes(activity.value.moving_time));
     const activityDistance = computed(() => (activity.value.distance / 1000).toFixed(3));
@@ -21,6 +23,7 @@ export const useStravaActivity = (activity) => {
 export const useStrava = () => {
     const stravaAccessToken = useLocalStorage('stravaAccessToken', '');
     const stravaRefreshToken = useLocalStorage('stravaRefreshToken', '');
+    const { marathonDate } = useProgram();
 
     const {
         data: athleteData,
@@ -28,7 +31,16 @@ export const useStrava = () => {
         isError: isAthleteError,
     } = useGetAthleteData(stravaAccessToken);
 
-    const { data: activities, isPending: isActivitiesPending } = useGetActivities(stravaAccessToken, { per_page: 30 });
+    const { data: sportActivities, isPending: isActivitiesPending } = useGetActivities(stravaAccessToken, {
+        per_page: 100,
+        after: Math.floor(subMonths(marathonDate.value, 3).getTime() / 1000),
+    });
+
+    const activities = computed(() =>
+        sportActivities?.value
+            .filter((activity) => ['Run', 'TrailRun'].includes(activity.type))
+            .sort((a, b) => new Date(b.start_date) - new Date(a.start_date)),
+    );
 
     const isValidStrava = computed(() => stravaAccessToken.value && !!athleteData.value && !isAthleteError.value);
     const fullName = computed(() =>
