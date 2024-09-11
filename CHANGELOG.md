@@ -1,3 +1,19 @@
+# [1.7.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.6.1...v1.7.0) (2024-08-26)
+
+
+### Bug Fixes
+
+* fix reactivity on stravaAccessToken ([0bdbe99](https://github.com/TheoLaperrouse/MarathonProgram/commit/0bdbe99889888a5bd331ea76c413cc6ab69eb088))
+* fix wrong calculation of Vo2Max ([e09e88d](https://github.com/TheoLaperrouse/MarathonProgram/commit/e09e88dbc5735893a1abcc7ad7246db59edf7c36))
+* refresh stravaToken when revoked ([9896f1d](https://github.com/TheoLaperrouse/MarathonProgram/commit/9896f1d89a1eeb09d3c8c8ef157f2479d46d6b73))
+
+
+### Features
+
+* add a activities page to see Strava last activities ([87b1815](https://github.com/TheoLaperrouse/MarathonProgram/commit/87b18154993f0bc2e7b2aba1c8e6bb38f318ce32))
+* add a button in settings to delete all your informations ([22a8a80](https://github.com/TheoLaperrouse/MarathonProgram/commit/22a8a80e40912bfb361135f97fba39bfa1a6df14))
+* add garmin API skeleton / add cardiac frequency in Recap VMA / switch some settings input ([2b6746a](https://github.com/TheoLaperrouse/MarathonProgram/commit/2b6746a4d385dd9d0a0dea1f03268178cb071e59))
+
 ## [1.6.1](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.6.0...v1.6.1) (2024-08-21)
 
 
