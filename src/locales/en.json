@@ -75,5 +75,6 @@
     "confirmButton": "Yes",
     "cancelButton": "No",
     "deleted": "Deleted!",
-    "confirmDeletion": "You informations has been deleted"
+    "confirmDeletion": "You informations has been deleted",
+    "percentVMA": "Pourcentage VMA"
 }
