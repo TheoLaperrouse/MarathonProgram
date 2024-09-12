@@ -24,7 +24,7 @@
         </div>
         <div class="mb-2">
             <label>{{ $t('selectTrainingDays') }}</label>
-            <div class="flex space-x-2">
+            <div class="flex flex-wrap gap-2">
                 <label v-for="(day, index) in daysOfWeek" :key="index" class="flex items-center">
                     <input
                         type="checkbox"
@@ -41,7 +41,7 @@
                     v-if="trainingDayChoices.length !== trainingDays"
                     :icon="faExclamationTriangle"
                     v-tooltip="$t('tooltipNotEnoughDays')"
-                    class="ml-2 text-red-500 text-xl"
+                    class="text-red-500 text-xl"
                 />
             </div>
         </div>

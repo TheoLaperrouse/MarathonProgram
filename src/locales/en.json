@@ -65,7 +65,8 @@
     "todayWorkout": "Today's session",
     "trainingDaysInput": "Training days per week",
     "vma": "VMA Summary",
-    "vmaInformations": "Information on your paces according to the percentage of VMA:",
+    "vmaInformations": "Paces / VMA informations :",
+    "cardiacFrequency": "BPM",
     "VO2MaxInformations": "Your VO2Max is {VO2Max} ml/kg/min",
     "warmUpDescription": "Warm-up: {warmUpTime}",
     "welcomeTitle": "Hello {fullName}",
@@ -76,7 +77,7 @@
     "cancelButton": "No",
     "deleted": "Deleted!",
     "confirmDeletion": "You informations has been deleted",
-    "percentVMA": "Pourcentage VMA",
+    "percentVMA": "% VMA",
     "week": "Week",
     "tooltipNotEnoughDays": "The number of selected days is less than the required number."
 }
