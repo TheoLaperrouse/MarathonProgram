@@ -1,3 +1,16 @@
+# [1.9.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.8.0...v1.9.0) (2024-09-12)
+
+
+### Bug Fixes
+
+* fix DayProgram page display nothing ([664fe50](https://github.com/TheoLaperrouse/MarathonProgram/commit/664fe506777ac0fd545413388c4c8becb8ae7f3a))
+
+
+### Features
+
+* add an error icon with tooltip when trainingDays > dayChoices length ([f860811](https://github.com/TheoLaperrouse/MarathonProgram/commit/f860811b48ca04c71c8b323b63cc7490bb2f10fa))
+* display calendar activities and Strava activities by weeks ([da3ab2d](https://github.com/TheoLaperrouse/MarathonProgram/commit/da3ab2d73e36ee513661e9daa1669b79708d9b00))
+
 # [1.8.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.7.0...v1.8.0) (2024-09-11)
 
 
