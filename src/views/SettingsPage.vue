@@ -37,6 +37,12 @@
                     />
                     <span class="ml-1">{{ $t(`daysOfWeek.${day}`) }}</span>
                 </label>
+                <FontAwesomeIcon
+                    v-if="trainingDayChoices.length !== trainingDays"
+                    :icon="faExclamationTriangle"
+                    v-tooltip="$t('tooltipNotEnoughDays')"
+                    class="ml-2 text-red-500 text-xl"
+                />
             </div>
         </div>
         <div class="my-3 text-xl font-bold">{{ $t('stravaToken') }}</div>
@@ -75,7 +81,7 @@ import LanguageSelect from '@/components/LanguageSelect.vue';
 import { usePerformance } from '@/composables/usePerformance';
 import { useProgram } from '@/composables/useProgram';
 import { useStrava } from '@/composables/useStrava';
-import { faCheck, faXmark, faSpinner, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark, faSpinner, faTrashCan, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import DatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
