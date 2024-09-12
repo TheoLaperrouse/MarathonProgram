@@ -1,3 +1,11 @@
+# [1.10.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.9.0...v1.10.0) (2024-09-12)
+
+
+### Features
+
+* fully responsive for mobile ([ed23ae2](https://github.com/TheoLaperrouse/MarathonProgram/commit/ed23ae27a8b1b48cd11af4f1b341b4739f3dbef7))
+* OAuth connection with Strava Button in settings ([e908cfe](https://github.com/TheoLaperrouse/MarathonProgram/commit/e908cfe7dc54b6113c93dbecd3ed80b3a432a2e5))
+
 # [1.9.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.8.0...v1.9.0) (2024-09-12)
 
 
