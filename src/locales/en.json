@@ -79,5 +79,6 @@
     "confirmDeletion": "You informations has been deleted",
     "percentVMA": "% VMA",
     "week": "Week",
-    "tooltipNotEnoughDays": "The number of selected days is less than the required number."
+    "tooltipNotEnoughDays": "The number of selected days is less than the required number.",
+    "stravaConnection": "Connection Strava : "
 }

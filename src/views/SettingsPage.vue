@@ -45,22 +45,12 @@
                 />
             </div>
         </div>
-        <div class="my-3 text-xl font-bold">{{ $t('stravaToken') }}</div>
-        <label>{{ $t('stravaAccessTokenInput') }}</label>
-        <div class="flex items-center mb-2">
-            <input class="w-60" v-model="stravaAccessToken" />
-            <FontAwesomeIcon
-                v-if="stravaAccessToken && isAthletePending"
-                :icon="faSpinner"
-                spin
-                class="text-gray-500 ml-2"
-            />
-            <FontAwesomeIcon v-else-if="isValidStrava" :icon="faCheck" class="text-green-500 ml-2" />
+        <div class="my-3 text-xl font-bold">{{ $t('stravaConnection') }}</div>
+
+        <div class="flex text-2xl items-center mb-2">
+            <StravaConnectionButton />
+            <FontAwesomeIcon v-if="isValidStrava" :icon="faCheck" class="text-green-500 ml-2" />
             <FontAwesomeIcon v-else :icon="faXmark" class="text-red-500 ml-2" />
-        </div>
-        <div>
-            <label>{{ $t('stravaRefreshTokenInput') }}</label>
-            <input class="w-60" v-model="stravaRefreshToken" />
         </div>
         <!-- <div class="my-3 text-xl font-bold">{{ $t('garminToken') }}</div>
         <label>{{ $t('garminAccessTokenInput') }}</label>
@@ -78,10 +68,11 @@
 
 <script setup>
 import LanguageSelect from '@/components/LanguageSelect.vue';
+import StravaConnectionButton from '@/components/StravaConnectionButton.vue';
 import { usePerformance } from '@/composables/usePerformance';
 import { useProgram } from '@/composables/useProgram';
 import { useStrava } from '@/composables/useStrava';
-import { faCheck, faXmark, faSpinner, faTrashCan, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark, faTrashCan, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import DatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
@@ -92,7 +83,7 @@ import { useI18n } from 'vue-i18n';
 const { locale, t } = useI18n();
 const { marathonDate, trainingDays, trainingDayChoices } = useProgram();
 const { marathonTime, bestTime } = usePerformance();
-const { isAthletePending, stravaAccessToken, stravaRefreshToken, isValidStrava } = useStrava();
+const { isValidStrava } = useStrava();
 
 const getDayValue = (index) => (index + 1) % 7;
 

@@ -21,15 +21,12 @@ export const useStravaActivity = (activity) => {
 };
 
 export const useStrava = () => {
+    const { VITE_STRAVA_CLIENT_ID: client_id, VITE_STRAVA_CLIENT_SECRET: client_secret } = import.meta.env;
     const stravaAccessToken = useLocalStorage('stravaAccessToken', '');
     const stravaRefreshToken = useLocalStorage('stravaRefreshToken', '');
     const { marathonProgramDate } = useProgram();
 
-    const {
-        data: athleteData,
-        isPending: isAthletePending,
-        isError: isAthleteError,
-    } = useGetAthleteData(stravaAccessToken);
+    const { data: athleteData, isError: isAthleteError } = useGetAthleteData(stravaAccessToken);
 
     const { data: sportActivities, isPending: isActivitiesPending } = useGetActivities(stravaAccessToken, {
         per_page: 100,
@@ -51,9 +48,44 @@ export const useStrava = () => {
         () => activities.value?.filter((activity) => isToday(parseISO(activity.start_date_local)))[0],
     );
 
+    const loginWithStrava = () => {
+        const redirectUri = window.location.href;
+        const responseType = 'code';
+        const scope = 'read_all,activity:read_all';
+
+        const authUrl = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=${responseType}&scope=${scope}`;
+
+        window.location.href = authUrl;
+    };
+
+    const handleAuthRedirect = async () => {
+        const query = new URLSearchParams(window.location.search);
+        const code = query.get('code');
+
+        if (code) {
+            const response = await fetch('https://www.strava.com/oauth/token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    client_id,
+                    client_secret,
+                    code,
+                    grant_type: 'authorization_code',
+                }),
+            });
+
+            const data = await response.json();
+            stravaAccessToken.value = data.access_token;
+            stravaRefreshToken.value = data.refresh_token;
+        }
+    };
+
     return {
+        loginWithStrava,
+        handleAuthRedirect,
         athleteData,
-        isAthletePending,
         activities,
         isActivitiesPending,
         stravaAccessToken,
