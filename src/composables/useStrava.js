@@ -37,8 +37,8 @@ export const useStrava = () => {
     });
 
     const activities = computed(() =>
-        sportActivities?.value
-            .filter((activity) => ['Run', 'TrailRun'].includes(activity.type))
+        sportActivities.value
+            ?.filter((activity) => ['Run', 'TrailRun'].includes(activity.type))
             .sort((a, b) => new Date(b.start_date) - new Date(a.start_date)),
     );
 
