@@ -67,6 +67,21 @@ export const useProgram = () => {
             }, {});
     });
 
+    const weekTrainings = computed(() => {
+        const daysPerWeek = trainingDays.value;
+        const trainingEntries = Object.entries(trainingSchedule.value);
+        const weeks = [];
+        for (let i = 0; i < trainingEntries.length; i += daysPerWeek) {
+            weeks.push(
+                trainingEntries.slice(i, i + daysPerWeek).reduce((acc, [date, training]) => {
+                    acc[date] = training;
+                    return acc;
+                }, {}),
+            );
+        }
+        return weeks;
+    });
+
     const dayTraining = computed(() => {
         const todayFormatted = format(Date.now(), 'dd/MM/yyyy');
         return trainingSchedule.value[todayFormatted];
@@ -91,6 +106,7 @@ export const useProgram = () => {
         formattedMarathonDate,
         trainingDays,
         trainingDayChoices,
+        weekTrainings,
         program,
         marathonProgramDate,
         trainingSchedule,

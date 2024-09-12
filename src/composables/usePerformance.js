@@ -57,9 +57,9 @@ export const usePerformance = () => {
             color: '#E12117',
         },
         marathon: {
-            pace: getPaceByPercentVMA(70),
-            cardiacFrequency: getCardiacFrequencyByPercentVMA(70),
-            percentVMA: 70,
+            pace: getPaceByPercentVMA(80),
+            cardiacFrequency: getCardiacFrequencyByPercentVMA(80),
+            percentVMA: 80,
             color: '#FFFF00',
         },
     }));

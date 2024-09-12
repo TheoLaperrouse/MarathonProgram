@@ -2,7 +2,7 @@ import { useFormatter } from '@/composables/useFormatter';
 import { useProgram } from '@/composables/useProgram';
 import { useGetAthleteData, useGetActivities } from '@/composables/useStravaQueries';
 import { useLocalStorage } from '@vueuse/core';
-import { parseISO, isToday, subMonths } from 'date-fns';
+import { parseISO, isToday } from 'date-fns';
 import { computed } from 'vue';
 
 export const useStravaActivity = (activity) => {
@@ -23,7 +23,7 @@ export const useStravaActivity = (activity) => {
 export const useStrava = () => {
     const stravaAccessToken = useLocalStorage('stravaAccessToken', '');
     const stravaRefreshToken = useLocalStorage('stravaRefreshToken', '');
-    const { marathonDate } = useProgram();
+    const { marathonProgramDate } = useProgram();
 
     const {
         data: athleteData,
@@ -33,7 +33,7 @@ export const useStrava = () => {
 
     const { data: sportActivities, isPending: isActivitiesPending } = useGetActivities(stravaAccessToken, {
         per_page: 100,
-        after: Math.floor(subMonths(marathonDate.value, 3).getTime() / 1000),
+        after: Math.floor(marathonProgramDate.value.getTime() / 1000),
     });
 
     const activities = computed(() =>

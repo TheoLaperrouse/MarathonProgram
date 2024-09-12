@@ -77,5 +77,7 @@
     "cancelButton": "Non",
     "deleted": "Supprimé!",
     "confirmDeletion": "Vos informations ont bien été supprimées",
-    "percentVMA": "Pourcentage VMA"
+    "percentVMA": "Pourcentage VMA",
+    "week": "Semaine",
+    "tooltipNotEnoughDays": "Le nombre de jours sélectionnés est inférieur au nombre requis."
 }
