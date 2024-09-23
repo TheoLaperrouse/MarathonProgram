@@ -52,11 +52,6 @@
             <FontAwesomeIcon v-if="isValidStrava" :icon="faCheck" class="text-green-500 ml-2" />
             <FontAwesomeIcon v-else :icon="faXmark" class="text-red-500 ml-2" />
         </div>
-        <!-- <div class="my-3 text-xl font-bold">{{ $t('garminToken') }}</div>
-        <label>{{ $t('garminAccessTokenInput') }}</label>
-        <div class="flex items-center mb-2">
-            <input class="w-60" v-model="garminAccessToken" />
-        </div> -->
         <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div>
         <LanguageSelect />
         <div class="my-3 text-xl font-bold">{{ $t('deleteProgram') }} :</div>

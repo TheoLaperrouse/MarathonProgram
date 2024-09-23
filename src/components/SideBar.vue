@@ -59,8 +59,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useLocalStorage } from '@vueuse/core';
 import { computed } from 'vue';
 
-const { width, height } = useScreenSize();
-const isPortrait = computed(() => height.value > width.value);
+const { isPortrait } = useScreenSize();
+
 const isSidebarOpen = useLocalStorage('isSidebarOpen', !isPortrait.value);
 const toggleSidebar = () => (isSidebarOpen.value = !isSidebarOpen.value);
 

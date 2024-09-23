@@ -6,22 +6,12 @@
         <template v-else>
             <div v-if="formattedDate" class="text-2xl mb-2 flex justify-between bold">
                 {{ formattedDate }} :
-                <div class="flex items-center">
-                    <button
-                        class="mr-2 text-base rounded-md bg-zinc-500 px-1 text-white shadow-md hover:bg-zinc-700"
-                        v-if="isValidGarmin && !isTrainingMade(date)"
-                        v-tooltip="$t('exportTraining')"
-                        @click="sendWorkoutToGarmin"
-                    >
-                        <FontAwesomeIcon :icon="faCloudArrowUp"> </FontAwesomeIcon>
-                    </button>
-                    <input
-                        class="w-6 h-6"
-                        type="checkbox"
-                        :checked="isTrainingMade(date)"
-                        @change="updateMadeTrainings(date)"
-                    />
-                </div>
+                <input
+                    class="w-6 h-6"
+                    type="checkbox"
+                    :checked="isTrainingMade(date)"
+                    @change="updateMadeTrainings(date)"
+                />
             </div>
             <div class="text-xl mb-2">
                 <b>{{ $t(type) }}</b> ({{ paces[type].percentVMA }}% VMA / {{ paces[type].cardiacFrequency }} BPM) :
@@ -72,11 +62,8 @@
 </template>
 <script setup>
 import { useFormatter } from '@/composables/useFormatter';
-import { useGarmin } from '@/composables/useGarmin';
 import { usePerformance } from '@/composables/usePerformance';
 import { useProgram } from '@/composables/useProgram';
-import { faCloudArrowUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { computed, toRefs } from 'vue';
 
 const props = defineProps({
@@ -88,7 +75,6 @@ const { training, date } = toRefs(props);
 const { paces, marathonTime } = usePerformance();
 const { isTrainingMade, updateMadeTrainings } = useProgram();
 const { humanizeDate, parseDate } = useFormatter();
-const { sendWorkoutToGarmin, isValidGarmin } = useGarmin();
 
 const formattedDate = computed(() => (date.value ? humanizeDate(parseDate(date.value)) : null));
 const type = computed(() => training.value?.type);
