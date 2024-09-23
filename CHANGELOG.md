@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.10.0...v1.11.0) (2024-09-23)
+
+
+### Features
+
+* Full responsive app ([601d4e4](https://github.com/TheoLaperrouse/MarathonProgram/commit/601d4e421e77f287a054928cd2aa8632269dc348))
+
 # [1.10.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.9.0...v1.10.0) (2024-09-12)
 
 
