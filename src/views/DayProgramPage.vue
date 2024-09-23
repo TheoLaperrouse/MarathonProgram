@@ -2,7 +2,7 @@
     <div class="p-4">
         <h1 class="mb-4 text-3xl font-bold">{{ $t('dayProgram') }}</h1>
         <div class="card border-blue-500">
-            <h2 class="mb-4 text-2xl font-bold text-blue-800">
+            <h2 class="mb-4 text-xl font-bold text-blue-800">
                 {{ $t('todayWorkout') }} : {{ humanizeDate(Date.now()) }}
             </h2>
             <TrainingDescription class="mb-8" :training="dayTraining" />

@@ -1,6 +1,6 @@
 import { useFormatter } from '@/composables/useFormatter';
 import { useLocalStorage } from '@vueuse/core';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 export const usePerformance = () => {
     const { formatSecondsToMinutes, convertTimeToSeconds } = useFormatter();
@@ -25,7 +25,7 @@ export const usePerformance = () => {
         return (cardiacFrequencyMax * percent) / 100;
     };
 
-    const paces = computed(() => ({
+    const paces = ref({
         mediumRun: {
             pace: getPaceByPercentVMA(70),
             cardiacFrequency: getCardiacFrequencyByPercentVMA(70),
@@ -50,19 +50,13 @@ export const usePerformance = () => {
             percentVMA: 100,
             color: '#E12117',
         },
-        fastIntervalsRun: {
-            pace: getPaceByPercentVMA(110),
-            cardiacFrequency: getCardiacFrequencyByPercentVMA(85),
-            percentVMA: 110,
-            color: '#E12117',
-        },
         marathon: {
             pace: getPaceByPercentVMA(80),
             cardiacFrequency: getCardiacFrequencyByPercentVMA(80),
             percentVMA: 80,
-            color: '#FFFF00',
+            color: '#DDD000',
         },
-    }));
+    });
 
     return { paces, VO2Max, VMAKmH, marathonTime, bestTime, bestTimeSeconds, marathonTimeSeconds };
 };

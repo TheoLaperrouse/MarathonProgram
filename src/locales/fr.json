@@ -27,7 +27,6 @@
         "wednesday": "Mercredi"
     },
     "endurance": "Endurance fondamentale",
-    "fastIntervalsRun": "Fractionné rapide",
     "githubRepo": "Repo Github",
     "home": "Accueil",
     "homeDescription": "Découvrez notre application dédiée à la visualisation et au suivi d'un programme d'entraînement à un marathon.<br/><br/>Planifiez, suivez et optimisez votre entraînement avec des outils intuitifs et des informations détaillées.<br/><br/>Dans un premier temps, aller dans les paramètres pour renseigner vos données :",
@@ -65,7 +64,7 @@
     "todayWorkout": "Séance d'aujourd'hui",
     "trainingDaysInput": "Jours d'entraînement par semaine",
     "vma": "Récap VMA",
-    "cardiacFrequency": "FC moyenne",
+    "cardiacFrequency": "Fréquence cardiaque moyenne",
     "vmaInformations": "Informations Allures / VMA :",
     "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min",
     "warmUpDescription": "Échauffement : {warmUpTime}",
@@ -77,7 +76,7 @@
     "cancelButton": "Non",
     "deleted": "Supprimé!",
     "confirmDeletion": "Vos informations ont bien été supprimées",
-    "percentVMA": "% VMA",
+    "percentVMA": "Pourcentage VMA",
     "week": "Semaine",
     "tooltipNotEnoughDays": "Le nombre de jours sélectionnés est inférieur au nombre requis.",
     "stravaConnection": "Connexion Strava : "

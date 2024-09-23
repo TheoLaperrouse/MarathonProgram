@@ -1,11 +1,11 @@
 <template>
     <div
         :class="[
-            'menu min-h-screen bg-gray-800 text-white flex flex-col',
+            'menu bg-gray-800 text-white flex flex-col justify-between',
             isSidebarOpen ? 'min-w-[225px]' : 'min-w-[80px]',
         ]"
     >
-        <ul class="mt-4 flex-1 ml-6">
+        <ul class="mt-4 ml-6">
             <li class="py-4" v-for="(link, index) in menuLinks" :key="index">
                 <RouterLink
                     :class="{ 'text-indigo-400': $route.path === link.to }"
@@ -21,21 +21,19 @@
                 </RouterLink>
             </li>
         </ul>
-        <div class="flex-shrink-0 py-4 ml-6">
-            <a :href="githubLink" target="_blank" class="flex items-center">
-                <FontAwesomeIcon
-                    :icon="faGithub"
-                    v-tooltip="!isSidebarOpen ? $t('githubRepo') : ''"
-                    class="mr-4 text-2xl"
-                />
-                <span v-if="isSidebarOpen">{{ $t('githubRepo') }}</span>
-            </a>
-        </div>
+        <a :href="githubLink" target="_blank" class="flex items-center py-4 ml-6">
+            <FontAwesomeIcon
+                :icon="faGithub"
+                v-tooltip="!isSidebarOpen ? $t('githubRepo') : ''"
+                class="mr-4 text-2xl"
+            />
+            <span v-if="isSidebarOpen">{{ $t('githubRepo') }}</span>
+        </a>
         <button
             v-if="!isPortrait"
             @click="toggleSidebar"
             :class="[
-                'absolute bottom-4 rounded-full border border-gray-600 bg-gray-800 p-2 text-white hover:bg-gray-700',
+                'absolute bottom-4 rounded-full border border-gray-600 bg-gray-800 p-2 hover:bg-gray-700',
                 isSidebarOpen ? 'left-[209px]' : 'left-[64px]',
             ]"
         >
@@ -47,8 +45,7 @@
 <script setup>
 import { useScreenSize } from '@/composables/useScreenSize';
 import { useStrava } from '@/composables/useStrava';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faStrava } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faStrava } from '@fortawesome/free-brands-svg-icons';
 import {
     faHome,
     faCalendar,
