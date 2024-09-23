@@ -3,29 +3,34 @@
         <h1 class="mb-4 text-3xl font-bold">{{ $t('vma') }}</h1>
         <div>{{ $t('VO2MaxInformations', { VO2Max }) }}</div>
         <h1 class="mb-4 text-xl font-bold mt-4">{{ $t('vmaInformations') }}</h1>
-        <table class="w-full table-auto border-collapse border border-gray-200">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="border border-gray-300 px-2 py-2">{{ $t('runType') }}</th>
-                    <th class="border border-gray-300 px-2 py-2">{{ $t('percentVMA') }}</th>
-                    <th class="border border-gray-300 px-2 py-2">{{ $t('pace') }}</th>
-                    <th class="border border-gray-300 px-2 py-2">{{ $t('cardiacFrequency') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="({ pace, percentVMA, cardiacFrequency }, type) in paces" :key="type">
-                    <td class="border border-gray-300 px-2 py-2">{{ $t(type) }}</td>
-                    <td class="border border-gray-300 px-2 py-2 text-right">{{ percentVMA }} %</td>
-                    <td class="border border-gray-300 px-2 py-2 text-right">{{ pace }} min/km</td>
-                    <td class="border border-gray-300 px-2 py-2 text-right">{{ cardiacFrequency }} BPM</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <div
+                v-for="({ pace, percentVMA, cardiacFrequency, color: borderColor }, type) in paces"
+                :key="type"
+                class="bg-white border border-gray-200 rounded-lg shadow-md p-4"
+                :style="{ borderColor, backgroundColor: hexToRGBA(borderColor, 0.2) }"
+            >
+                <h2 class="text-lg font-semibold mb-2">{{ $t(type) }}</h2>
+                <div class="text-gray-700">
+                    <p class="mb-2">
+                        <strong>{{ $t('percentVMA') }}:</strong> {{ percentVMA }} %
+                    </p>
+                    <p class="mb-2">
+                        <strong>{{ $t('pace') }}:</strong> {{ pace }} min/km
+                    </p>
+                    <p class="mb-2">
+                        <strong>{{ $t('cardiacFrequency') }}:</strong> {{ cardiacFrequency }} BPM
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
+import { useFormatter } from '@/composables/useFormatter';
 import { usePerformance } from '@/composables/usePerformance';
 
 const { VO2Max, paces } = usePerformance();
+const { hexToRGBA } = useFormatter();
 </script>

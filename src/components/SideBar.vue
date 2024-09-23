@@ -32,6 +32,7 @@
             </a>
         </div>
         <button
+            v-if="!isPortrait"
             @click="toggleSidebar"
             :class="[
                 'absolute bottom-4 rounded-full border border-gray-600 bg-gray-800 p-2 text-white hover:bg-gray-700',
@@ -44,6 +45,7 @@
 </template>
 
 <script setup>
+import { useScreenSize } from '@/composables/useScreenSize';
 import { useStrava } from '@/composables/useStrava';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faStrava } from '@fortawesome/free-brands-svg-icons';
@@ -60,7 +62,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useLocalStorage } from '@vueuse/core';
 import { computed } from 'vue';
 
-const isSidebarOpen = useLocalStorage('isSidebarOpen', true);
+const { width, height } = useScreenSize();
+const isPortrait = computed(() => height.value > width.value);
+const isSidebarOpen = useLocalStorage('isSidebarOpen', !isPortrait.value);
 const toggleSidebar = () => (isSidebarOpen.value = !isSidebarOpen.value);
 
 const { stravaAccessToken } = useStrava();
