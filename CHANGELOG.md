@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.11.0...v1.11.1) (2024-09-23)
+
+
+### Bug Fixes
+
+* fix sidebar on mobile ([3f94541](https://github.com/TheoLaperrouse/MarathonProgram/commit/3f945418a71d608c0d82cf57c47a3eb9bc0f8661))
+
 # [1.11.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.10.0...v1.11.0) (2024-09-23)
 
 
