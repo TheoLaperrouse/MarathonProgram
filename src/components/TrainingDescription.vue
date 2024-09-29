@@ -39,7 +39,7 @@
                     }}</span>
                 </div>
             </template>
-            <template v-else-if="type === 'fastIntervalsRun'">
+            <template v-else-if="type === 'intervalsRun'">
                 <div>
                     <span class="block">{{ $t('warmUpDescription', { warmUpTime: training.warmUpTime }) }}</span>
                     <span class="block">{{
