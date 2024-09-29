@@ -1,3 +1,10 @@
+## [1.11.4](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.11.3...v1.11.4) (2024-09-29)
+
+
+### Bug Fixes
+
+* Fix description of intervals run ([156f5cd](https://github.com/TheoLaperrouse/MarathonProgram/commit/156f5cd2e39114c6fcf1f06f64bba025bae5c615))
+
 ## [1.11.3](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.11.2...v1.11.3) (2024-09-23)
 
 ## [1.11.2](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.11.1...v1.11.2) (2024-09-23)
