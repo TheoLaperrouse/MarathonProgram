@@ -17,7 +17,7 @@
                         :key="date"
                         :training="training"
                         :date="date"
-                        class="rounded-lg shadow p-4 border-2"
+                        class="rounded-lg shadow-sm p-4 border-2"
                         :style="getStyle(training.type, date)"
                     />
                 </div>

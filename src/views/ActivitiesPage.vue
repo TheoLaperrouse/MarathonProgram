@@ -15,7 +15,7 @@
                         :key="activity.id"
                         :activity="activity"
                         :show-date="true"
-                        class="rounded-lg shadow p-4 border-2"
+                        class="rounded-lg shadow-sm p-4 border-2"
                         :style="getStyle(activity)"
                     />
                 </div>
