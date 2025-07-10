@@ -1,20 +1,18 @@
 <template>
     <div
         :class="[
-            'menu bg-gray-800 text-white flex flex-col justify-between fixed top-0 left-0 bottom-0 z-40 transition-all duration-300 ease-in-out',
+            'menu bg-gray-800 text-white flex flex-col justify-between fixed top-0 left-0 bottom-0',
             isSidebarOpen ? 'w-64' : 'w-20',
         ]"
     >
         <div class="px-4 py-2 border-b border-gray-700 flex items-center h-16 relative">
-            <transition name="fade">
-                <span v-if="isSidebarOpen" class="text-xl font-bold text-indigo-400 whitespace-nowrap">
-                    {{ $t('appName') }}
-                </span>
-            </transition>
+            <span v-if="isSidebarOpen" class="text-xl font-bold whitespace-nowrap">
+                {{ $t('appName') }}
+            </span>
 
             <button
                 @click="toggleSidebar"
-                class="absolute rounded-md hover:bg-gray-700 transition-colors"
+                class="absolute rounded-md hover:bg-gray-700"
                 :class="isSidebarOpen ? 'right-4' : 'left-1/2 -translate-x-1/2'"
             >
                 <FontAwesomeIcon
@@ -27,7 +25,7 @@
             <li v-for="(link, index) in menuLinks" :key="index">
                 <RouterLink
                     :to="link.to"
-                    class="flex items-center p-3 rounded-lg transition-colors"
+                    class="flex items-center p-3 rounded-lg"
                     :class="{
                         'bg-gray-700 text-indigo-400': $route.path === link.to,
                         'hover:bg-gray-700': $route.path !== link.to,
@@ -39,9 +37,7 @@
                         class="text-xl min-w-[24px]"
                         :class="isSidebarOpen ? 'mr-3' : 'mx-auto'"
                     />
-                    <transition name="fade">
-                        <span v-if="isSidebarOpen" class="truncate">{{ $t(link.text) }}</span>
-                    </transition>
+                    <span v-if="isSidebarOpen" class="truncate">{{ $t(link.text) }}</span>
                 </RouterLink>
             </li>
         </ul>
@@ -49,7 +45,7 @@
             <a
                 :href="githubLink"
                 target="_blank"
-                class="flex items-center p-2 rounded-lg hover:bg-gray-700 transition-colors"
+                class="flex items-center p-2 rounded-lg hover:bg-gray-700"
                 v-tooltip="!isSidebarOpen ? $t('githubRepo') : ''"
             >
                 <FontAwesomeIcon
@@ -57,9 +53,7 @@
                     class="text-xl min-w-[24px]"
                     :class="isSidebarOpen ? 'mr-3' : 'mx-auto'"
                 />
-                <transition name="fade">
-                    <span v-if="isSidebarOpen" class="truncate">{{ $t('githubRepo') }}</span>
-                </transition>
+                <span v-if="isSidebarOpen" class="truncate">{{ $t('githubRepo') }}</span>
             </a>
         </div>
     </div>
@@ -77,6 +71,7 @@ import {
     faChevronRight,
     faGear,
     faPersonRunning,
+    faMap,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { useLocalStorage } from '@vueuse/core';
@@ -95,6 +90,7 @@ const menuLinks = computed(() => [
     { to: '/calendar', text: 'calendar', icon: faCalendar },
     ...(stravaAccessToken.value ? [{ to: '/activities', text: 'activities', icon: faStrava }] : []),
     ...(stravaAccessToken.value ? [{ to: '/map', text: 'map', icon: faStrava }] : []),
+    { to: '/map', text: 'map', icon: faMap },
     { to: '/vma', text: 'vma', icon: faStopwatch },
     { to: '/settings', text: 'settings', icon: faGear },
 ]);
@@ -104,14 +100,6 @@ const githubLink = 'https://github.com/TheoLaperrouse/MarathonProgram';
 
 <style scoped>
 /* Animation pour les transitions */
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.2s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
 .fa-icon {
     flex-shrink: 0;
 }
