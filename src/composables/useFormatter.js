@@ -35,7 +35,7 @@ export const useFormatter = () => {
         const minutes = Math.floor(totalSeconds / 60);
         const remainingSeconds = totalSeconds % 60;
 
-        return `${formatNumber(minutes, 2)}'${formatNumber(remainingSeconds, 2)}"`;
+        return minutes > 1 ? `${minutes}'${remainingSeconds.toString().padStart(2, '0')}"` : `${remainingSeconds}"`;
     };
 
     const hexToRGBA = (color, opacity) => {

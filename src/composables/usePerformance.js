@@ -11,7 +11,7 @@ export const usePerformance = () => {
     const marathonTime = useLocalStorage('marathonTime', '4:00:00');
 
     const bestTimeSeconds = computed(() => convertTimeToSeconds(bestTime.value));
-    const marathonTimeSeconds = computed(() => convertTimeToSeconds(marathonTime.value));
+    const marathonTimeInSeconds = computed(() => convertTimeToSeconds(marathonTime.value));
     const VMAKmH = computed(() => (1 / (bestTimeSeconds.value / 2)) * 3600);
     const VO2Max = computed(() => parseInt(VMAKmH.value * 3.5));
 
@@ -25,18 +25,23 @@ export const usePerformance = () => {
         return (cardiacFrequencyMax * percent) / 100;
     };
 
+    const marathonPace = computed(() => {
+        const paceTotalSeconds = marathonTimeInSeconds.value / 42.195;
+        return formatSecondsToMinutes(paceTotalSeconds);
+    });
+
     const paces = ref({
-        mediumRun: {
-            pace: getPaceByPercentVMA(70),
-            cardiacFrequency: getCardiacFrequencyByPercentVMA(70),
-            percentVMA: 70,
-            color: '#009848',
-        },
         longRun: {
             pace: getPaceByPercentVMA(65),
             cardiacFrequency: getCardiacFrequencyByPercentVMA(60),
             percentVMA: 65,
             color: '#04C91A',
+        },
+        mediumRun: {
+            pace: getPaceByPercentVMA(70),
+            cardiacFrequency: getCardiacFrequencyByPercentVMA(70),
+            percentVMA: 70,
+            color: '#009848',
         },
         thresholdRun: {
             pace: getPaceByPercentVMA(82.5),
@@ -51,12 +56,12 @@ export const usePerformance = () => {
             color: '#E12117',
         },
         marathon: {
-            pace: getPaceByPercentVMA(80),
+            pace: marathonPace.value,
             cardiacFrequency: getCardiacFrequencyByPercentVMA(80),
             percentVMA: 80,
             color: '#DDD000',
         },
     });
 
-    return { paces, VO2Max, VMAKmH, marathonTime, bestTime, bestTimeSeconds, marathonTimeSeconds };
+    return { paces, VO2Max, VMAKmH, marathonTime, bestTime, bestTimeSeconds };
 };
