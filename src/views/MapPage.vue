@@ -14,7 +14,7 @@ onMounted(async () => {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
     for (const activity of activities) {
-        const coords = polyline.decode(activity.summary_polyline);
+        const coords = polyline.decode(activity.map.summary_polyline);
         const latlngs = coords.map(([lat, lng]) => [lat, lng]);
         L.polyline(latlngs, { color: 'red' }).addTo(map);
     }

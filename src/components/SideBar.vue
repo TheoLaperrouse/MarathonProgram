@@ -89,8 +89,7 @@ const menuLinks = computed(() => [
     { to: '/day-program', text: 'dayProgram', icon: faPersonRunning },
     { to: '/calendar', text: 'calendar', icon: faCalendar },
     ...(stravaAccessToken.value ? [{ to: '/activities', text: 'activities', icon: faStrava }] : []),
-    ...(stravaAccessToken.value ? [{ to: '/map', text: 'map', icon: faStrava }] : []),
-    { to: '/map', text: 'map', icon: faMap },
+    ...(stravaAccessToken.value ? [{ to: '/map', text: 'map', icon: faMap }] : []),
     { to: '/vma', text: 'vma', icon: faStopwatch },
     { to: '/settings', text: 'settings', icon: faGear },
 ]);
