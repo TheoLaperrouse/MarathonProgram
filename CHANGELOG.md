@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.12.0...v1.12.1) (2025-07-10)
+
+
+### Bug Fixes
+
+* fix run segments ([57dce91](https://github.com/TheoLaperrouse/MarathonProgram/commit/57dce91471e0910744a5d302b9cd169fa7a5672f))
+
 # [1.12.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.11.4...v1.12.0) (2025-07-10)
 
 
