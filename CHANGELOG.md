@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.11.4...v1.12.0) (2025-07-10)
+
+
+### Features
+
+* add a map to see runs ([66da441](https://github.com/TheoLaperrouse/MarathonProgram/commit/66da441af6e0ddaa2c430ba1a2384ca608ac4daa))
+
 ## [1.11.4](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.11.3...v1.11.4) (2024-09-29)
 
 
