@@ -1,44 +1,67 @@
 <template>
     <div
         :class="[
-            'menu bg-gray-800 text-white flex flex-col justify-between',
-            isSidebarOpen ? 'min-w-[225px]' : 'min-w-[80px]',
+            'menu bg-gray-800 text-white flex flex-col justify-between fixed top-0 left-0 bottom-0 z-40 transition-all duration-300 ease-in-out',
+            isSidebarOpen ? 'w-64' : 'w-20',
         ]"
     >
-        <ul class="mt-4 ml-6">
-            <li class="py-4" v-for="(link, index) in menuLinks" :key="index">
+        <div class="px-4 py-2 border-b border-gray-700 flex items-center h-16 relative">
+            <transition name="fade">
+                <span v-if="isSidebarOpen" class="text-xl font-bold text-indigo-400 whitespace-nowrap">
+                    {{ $t('appName') }}
+                </span>
+            </transition>
+
+            <button
+                @click="toggleSidebar"
+                class="absolute rounded-md hover:bg-gray-700 transition-colors"
+                :class="isSidebarOpen ? 'right-4' : 'left-1/2 -translate-x-1/2'"
+            >
+                <FontAwesomeIcon
+                    :icon="isSidebarOpen ? faChevronLeft : faChevronRight"
+                    class="text-gray-300 hover:text-white text-lg"
+                />
+            </button>
+        </div>
+        <ul class="mt-2 px-3 space-y-2 flex-1 overflow-y-auto">
+            <li v-for="(link, index) in menuLinks" :key="index">
                 <RouterLink
-                    :class="{ 'text-indigo-400': $route.path === link.to }"
                     :to="link.to"
-                    class="flex items-center"
+                    class="flex items-center p-3 rounded-lg transition-colors"
+                    :class="{
+                        'bg-gray-700 text-indigo-400': $route.path === link.to,
+                        'hover:bg-gray-700': $route.path !== link.to,
+                    }"
+                    v-tooltip="!isSidebarOpen ? $t(link.text) : ''"
                 >
                     <FontAwesomeIcon
                         :icon="link.icon"
-                        v-tooltip="!isSidebarOpen ? $t(link.text) : ''"
-                        class="mr-4 text-2xl"
+                        class="text-xl min-w-[24px]"
+                        :class="isSidebarOpen ? 'mr-3' : 'mx-auto'"
                     />
-                    <span v-if="isSidebarOpen">{{ $t(link.text) }}</span>
+                    <transition name="fade">
+                        <span v-if="isSidebarOpen" class="truncate">{{ $t(link.text) }}</span>
+                    </transition>
                 </RouterLink>
             </li>
         </ul>
-        <a :href="githubLink" target="_blank" class="flex items-center py-4 ml-6">
-            <FontAwesomeIcon
-                :icon="faGithub"
+        <div class="p-3 border-t border-gray-700">
+            <a
+                :href="githubLink"
+                target="_blank"
+                class="flex items-center p-2 rounded-lg hover:bg-gray-700 transition-colors"
                 v-tooltip="!isSidebarOpen ? $t('githubRepo') : ''"
-                class="mr-4 text-2xl"
-            />
-            <span v-if="isSidebarOpen">{{ $t('githubRepo') }}</span>
-        </a>
-        <button
-            v-if="!isPortrait"
-            @click="toggleSidebar"
-            :class="[
-                'absolute bottom-4 rounded-full border border-gray-600 bg-gray-800 p-2 hover:bg-gray-700',
-                isSidebarOpen ? 'left-[209px]' : 'left-[64px]',
-            ]"
-        >
-            <FontAwesomeIcon :icon="isSidebarOpen ? faChevronLeft : faChevronRight" class="text-xl" />
-        </button>
+            >
+                <FontAwesomeIcon
+                    :icon="faGithub"
+                    class="text-xl min-w-[24px]"
+                    :class="isSidebarOpen ? 'mr-3' : 'mx-auto'"
+                />
+                <transition name="fade">
+                    <span v-if="isSidebarOpen" class="truncate">{{ $t('githubRepo') }}</span>
+                </transition>
+            </a>
+        </div>
     </div>
 </template>
 
@@ -71,17 +94,25 @@ const menuLinks = computed(() => [
     { to: '/day-program', text: 'dayProgram', icon: faPersonRunning },
     { to: '/calendar', text: 'calendar', icon: faCalendar },
     ...(stravaAccessToken.value ? [{ to: '/activities', text: 'activities', icon: faStrava }] : []),
+    ...(stravaAccessToken.value ? [{ to: '/map', text: 'map', icon: faStrava }] : []),
     { to: '/vma', text: 'vma', icon: faStopwatch },
     { to: '/settings', text: 'settings', icon: faGear },
 ]);
 
 const githubLink = 'https://github.com/TheoLaperrouse/MarathonProgram';
 </script>
+
 <style scoped>
-.menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
+/* Animation pour les transitions */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+.fa-icon {
+    flex-shrink: 0;
 }
 </style>

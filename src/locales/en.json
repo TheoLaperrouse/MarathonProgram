@@ -1,4 +1,6 @@
 {
+    "appName": "Marathon Program",
+    "map": "Map",
     "dayActivitySummary": "Training done :",
     "stravaRefreshTokenInput": "Refresh Token :",
     "validateTraining": "Validate Training :",

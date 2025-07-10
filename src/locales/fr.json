@@ -1,4 +1,6 @@
 {
+    "appName": "Programme Marathon",
+    "map": "Carte",
     "dayActivitySummary": "Séance effectuée :",
     "stravaAccessTokenInput": "Access Token :",
     "stravaRefreshTokenInput": "Refresh Token :",
@@ -61,7 +63,7 @@
     "todayWorkout": "Séance d'aujourd'hui",
     "trainingDaysInput": "Jours d'entraînement par semaine",
     "vma": "Récap VMA",
-    "cardiacFrequency": "Fréquence cardiaque moyenne",
+    "cardiacFrequency": "FC",
     "vmaInformations": "Informations Allures / VMA :",
     "VO2MaxInformations": "Votre VO2Max est de {VO2Max} ml/kg/min",
     "warmUpDescription": "Échauffement : {warmUpTime}",

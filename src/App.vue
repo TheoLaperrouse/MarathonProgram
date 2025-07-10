@@ -1,7 +1,9 @@
 <template>
-    <div id="app" class="flex">
+    <div id="app" class="flex min-h-screen">
         <SideBar />
-        <router-view class="flex-auto" :class="isSidebarOpen ? 'ml-[225px]' : 'ml-[80px]'" />
+        <main class="flex-grow transition-all duration-300 ease-in-out" :class="isSidebarOpen ? 'ml-64' : 'ml-20'">
+            <router-view />
+        </main>
     </div>
 </template>
 
