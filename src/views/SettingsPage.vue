@@ -1,7 +1,14 @@
 <template>
     <div class="p-4">
-        <h1 class="text-3xl font-bold">{{ $t('settings') }}</h1>
-        <div class="my-3 text-xl font-bold">{{ $t('marathonProgram') }}</div>
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h1 class="text-3xl font-bold">{{ $t('settings') }}</h1>
+                <div class="my-3 text-xl font-bold">{{ $t('marathonProgram') }}</div>
+            </div>
+            <button @click="resetSettings" class="rounded-lg bg-red-600 px-4 py-3 text-white hover:bg-red-700">
+                <FontAwesomeIcon :icon="faRefresh" />
+            </button>
+        </div>
         <div class="mb-2">
             <label>{{ $t('marathonTimeInput') }}</label>
             <input class="w-20" v-model="marathonTime" />
@@ -54,10 +61,6 @@
         </div>
         <div class="my-3 text-xl font-bold">{{ $t('languageInput') }}</div>
         <LanguageSelect />
-        <div class="my-3 text-xl font-bold">{{ $t('deleteProgram') }} :</div>
-        <button @click="deleteProgram" class="rounded-lg bg-red-600 px-4 py-3 text-white hover:bg-red-700">
-            <FontAwesomeIcon :icon="faTrashCan" />
-        </button>
     </div>
 </template>
 
@@ -67,7 +70,7 @@ import StravaConnectionButton from '@/components/StravaConnectionButton.vue';
 import { usePerformance } from '@/composables/usePerformance';
 import { useProgram } from '@/composables/useProgram';
 import { useStrava } from '@/composables/useStrava';
-import { faCheck, faXmark, faTrashCan, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark, faExclamationTriangle, faRefresh } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import DatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
@@ -84,9 +87,9 @@ const getDayValue = (index) => (index + 1) % 7;
 
 const daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
-const deleteProgram = () => {
+const resetSettings = () => {
     Swal.fire({
-        title: t('deleteProgram'),
+        title: t('resetSettings'),
         text: t('confirmDelete'),
         icon: 'warning',
         confirmButtonText: t('confirmButton'),
