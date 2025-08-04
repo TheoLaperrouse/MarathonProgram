@@ -1,3 +1,22 @@
+# [1.13.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.12.1...v1.13.0) (2025-08-04)
+
+
+### Bug Fixes
+
+* fix run segments ([4eb3540](https://github.com/TheoLaperrouse/MarathonProgram/commit/4eb354014f6f9f732b4998a17997af8a32b508d1))
+* fix some formatting issue / optimized description for trainings ([1cb4d2d](https://github.com/TheoLaperrouse/MarathonProgram/commit/1cb4d2d742f30c5308acf386260d4b6424a7420e))
+* move the resetSettings button to the top ([5ee8ac1](https://github.com/TheoLaperrouse/MarathonProgram/commit/5ee8ac16c2e532f4bd364104a3229554b89966b2))
+
+
+### Features
+
+* add validations on time inputs ([2dc4266](https://github.com/TheoLaperrouse/MarathonProgram/commit/2dc426695c01fc24f2f400355580292080aa8787))
+
+
+### Performance Improvements
+
+* optimize display of activities ([9e51688](https://github.com/TheoLaperrouse/MarathonProgram/commit/9e51688252cf985f93445e01fe63fc2f393abf48))
+
 ## [1.12.1](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.12.0...v1.12.1) (2025-07-10)
 
 
