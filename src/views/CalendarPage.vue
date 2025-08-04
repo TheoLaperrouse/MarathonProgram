@@ -1,7 +1,6 @@
 <template>
     <div class="p-4">
         <h1 class="mb-4 text-3xl font-bold text-gray-800">{{ $t('calendar') }}</h1>
-
         <div
             class="mb-6 p-4 rounded-lg bg-blue-50 border-l-4 border-blue-500 text-gray-700"
             v-html="
@@ -9,8 +8,7 @@
                     ? $t('marathonDateInformations', { formattedMarathonDate, formattedProgramDate })
                     : $t('noMarathonDate')
             "
-        ></div>
-
+        />
         <template v-if="formattedMarathonDate">
             <template v-for="(week, index) in weekTrainings" :key="index">
                 <div class="flex items-center mb-4 mt-8">

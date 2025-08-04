@@ -1,7 +1,10 @@
 <template>
-    <div class="p-4 max-w-4xl mx-auto">
+    <div class="p-4 max-w-4xl">
         <h1 class="mb-6 text-3xl font-bold text-gray-800">{{ $t('dayProgram') }}</h1>
-        <div class="mb-8 rounded-xl shadow-sm p-6 border-l-4 transition-all hover:shadow-md" :style="trainingCardStyle">
+        <div
+            class="mb-8 w-fit rounded-xl shadow-sm p-6 border-l-4 transition-all hover:shadow-md"
+            :style="trainingCardStyle"
+        >
             <TrainingDescription
                 :training="dayTraining"
                 :date="date"
@@ -9,16 +12,14 @@
                 class="pl-4"
             />
         </div>
-        <div
-            v-if="dayActivity"
-            class="rounded-xl shadow-sm p-6 border-l-4 border-green-500 bg-green-50 transition-all hover:shadow-md"
-        >
-            <div class="flex items-center mb-4">
-                <div class="w-3 h-3 rounded-full bg-green-500 mr-3"></div>
-                <h2 class="text-xl font-bold text-gray-800">{{ $t('dayActivitySummary') }}</h2>
+        <template v-if="dayActivity">
+            <h1 class="mb-6 text-3xl font-bold text-gray-800">{{ $t('dayActivitySummary') }}</h1>
+            <div
+                class="rounded-xl shadow-sm p-6 border-l-4 border-green-500 bg-green-50 transition-all hover:shadow-md"
+            >
+                <Activity class="pl-4" :activity="dayActivity" :show-date="false" />
             </div>
-            <Activity :show-date="false" :show-checkbox="!!dayTraining" :activity="dayActivity" class="pl-4" />
-        </div>
+        </template>
     </div>
 </template>
 
