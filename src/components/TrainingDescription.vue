@@ -3,10 +3,9 @@
         <div v-if="!training" class="text-gray-600">
             {{ $t('noTraining') }}
         </div>
-
         <template v-else>
             <div class="flex justify-between mb-3">
-                <div class="w-95 text-lg font-semibold text-gray-700">
+                <div class="font-semibold text-gray-700">
                     {{ formattedDate }}
                 </div>
                 <div>
@@ -20,23 +19,31 @@
             </div>
             <div class="flex items-center mb-3">
                 <div class="w-3 h-3 rounded-full mr-2" :style="{ backgroundColor: paces[type].color }"></div>
-                <h3 class="text-lg font-medium text-gray-800">
-                    {{ $t(type) }} ({{ paces[type].percentVMA }}% VMA / ~{{ Math.round(paces[type].cardiacFrequency) }}
-                    BPM)
+                <h3 class="font-medium text-gray-900">
+                    {{ $t(type) }} ( ~ {{ Math.round(paces[type].cardiacFrequency) }} {{ $t('cardiacFrequency') }}) :
                 </h3>
             </div>
-            <div class="text-gray-600 space-y-2 pl-5">
-                <template v-if="['mediumRun', 'longRun'].includes(type)">
+            <div class="text-sm text-gray-800 space-y-2 pl-5">
+                <template v-if="type === 'longRun'">
                     <p>
                         {{
-                            $t('slowMediumRunDescription', {
+                            $t('slowRunDescription', {
                                 time: training.time,
-                                pace: paces[type].pace,
+                                pace: paces['longRun'].pace,
                             })
                         }}
                     </p>
                 </template>
-
+                <template v-else-if="type === 'mediumRun'">
+                    <p>
+                        {{
+                            $t('mediumRunDescription', {
+                                time: training.time,
+                                pace: paces['mediumRun'].pace,
+                            })
+                        }}
+                    </p>
+                </template>
                 <template v-else-if="type === 'thresholdRun'">
                     <p>{{ $t('warmUpDescription', { warmUpTime: training.warmUpTime }) }}</p>
                     <p>
@@ -46,11 +53,11 @@
                                 distance: training.distance,
                                 warmUpTime: training.warmUpTime,
                                 recupTime: training.recupTime,
+                                pace: paces['thresholdRun'].pace,
                             })
                         }}
                     </p>
                 </template>
-
                 <template v-else-if="type === 'intervalsRun'">
                     <p>{{ $t('warmUpDescription', { warmUpTime: training.warmUpTime }) }}</p>
                     <p>
@@ -62,13 +69,14 @@
                                 time2: training.time2,
                                 warmUpTime: training.warmUpTime,
                                 recupTime: training.recupTime,
+                                pace: paces['intervalsRun'].pace,
                             })
                         }}
                     </p>
                 </template>
 
                 <template v-else-if="type === 'marathon'">
-                    <p>{{ $t('marathonDescription', { expectedTime: marathonTime }) }}</p>
+                    <p>{{ $t('marathonDescription', { expectedTime: marathonTime, pace: paces['marathon'].pace }) }}</p>
                 </template>
             </div>
         </template>
