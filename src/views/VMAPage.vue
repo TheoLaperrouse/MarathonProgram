@@ -26,11 +26,7 @@
                     </p>
                     <p>
                         <span class="font-medium">{{ $t('percentVMA') }}: </span>
-                        <span class="text-gray-800">{{ percentVMA }}%</span>
-                    </p>
-                    <p>
-                        <span class="font-medium">{{ $t('cardiacFrequency') }}: </span>
-                        <span class="text-gray-800">{{ cardiacFrequency }} BPM</span>
+                        <span class="text-gray-800">{{ percentVMA }}% ({{ cardiacFrequency }} {{ $t('BPM') }})</span>
                     </p>
                 </div>
             </div>

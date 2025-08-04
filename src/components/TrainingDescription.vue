@@ -20,7 +20,7 @@
             <div class="flex items-center mb-3">
                 <div class="w-3 h-3 rounded-full mr-2" :style="{ backgroundColor: paces[type].color }"></div>
                 <h3 class="font-medium text-gray-900">
-                    {{ $t(type) }} ( ~ {{ Math.round(paces[type].cardiacFrequency) }} {{ $t('cardiacFrequency') }}) :
+                    {{ $t(type) }} ( ~{{ Math.round(paces[type].cardiacFrequency) }} {{ $t('BPM') }}) :
                 </h3>
             </div>
             <div class="text-sm text-gray-800 space-y-2 pl-5">

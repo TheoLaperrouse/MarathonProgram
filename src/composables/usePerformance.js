@@ -51,7 +51,7 @@ export const usePerformance = () => {
         },
         intervalsRun: {
             pace: getPaceByPercentVMA(100),
-            cardiacFrequency: getCardiacFrequencyByPercentVMA(80),
+            cardiacFrequency: getCardiacFrequencyByPercentVMA(85),
             percentVMA: 100,
             color: '#E12117',
         },

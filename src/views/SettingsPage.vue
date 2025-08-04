@@ -9,19 +9,23 @@
                 <FontAwesomeIcon :icon="faRefresh" />
             </button>
         </div>
-        <div class="mb-2">
+        <div class="mb-2 w-80">
             <label>{{ $t('marathonTimeInput') }}</label>
-            <input class="w-20" v-model="marathonTime" />
+            <input v-model="marathonTime" class="w-20" :class="{ 'border-red-500': marathonTimeError }" />
+            <span v-if="marathonTimeError" class="ml-2 text-red-500">
+                {{ $t('errorFormat', { format: 'H:MM:SS' }) }}
+            </span>
         </div>
-        <div class="mb-2">
+        <div class="mb-2 w-80">
             <label>{{ $t('bestTimeInput') }}</label>
-            <input class="w-20" v-model="bestTime" />
+            <input v-model="bestTime" class="w-20" :class="{ 'border-red-500': bestTimeError }" />
+            <span v-if="bestTimeError" class="ml-2 text-red-500">{{ $t('errorFormat', { format: 'M:SS' }) }}</span>
         </div>
-        <div class="mb-2 w-60">
+        <div class="mb-2 w-80">
             <label>{{ $t('marathonDate') }}</label>
             <DatePicker class="rounded-md" v-model="marathonDate" :enable-time-picker="false" :format="format" />
         </div>
-        <div class="mb-2">
+        <div class="mb-2 w-fit">
             <label>{{ $t('trainingDaysInput') }}</label>
             <select class="w-20" v-model="trainingDays">
                 <option :value="4">4</option>
@@ -53,7 +57,6 @@
             </div>
         </div>
         <div class="my-3 text-xl font-bold">{{ $t('stravaConnection') }}</div>
-
         <div class="flex text-2xl items-center mb-2">
             <StravaConnectionButton />
             <FontAwesomeIcon v-if="isValidStrava" :icon="faCheck" class="text-green-500 ml-2" />
@@ -77,6 +80,17 @@ import '@vuepic/vue-datepicker/dist/main.css';
 import Swal from 'sweetalert2';
 import { computed, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+
+const validateTime = (value, format) => {
+    if (!value) return false;
+    if (format === 'm:ss') {
+        return /^([0-5]?[0-9]|2[0-3]):[0-5][0-9]$/.test(value);
+    }
+    return /^([0-1]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/.test(value);
+};
+
+const marathonTimeError = computed(() => !validateTime(marathonTime.value));
+const bestTimeError = computed(() => !validateTime(bestTime.value, 'm:ss'));
 
 const { locale, t } = useI18n();
 const { marathonDate, trainingDays, trainingDayChoices } = useProgram();

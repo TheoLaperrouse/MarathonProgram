@@ -264,7 +264,7 @@ export const fiveTrainingsDayProgram = {
         { type: 'mediumRun', time: "50'" },
         { type: 'thresholdRun', warmUpTime: "40'", repetition: 3, distance: 1600, recupTime: "4'" },
         { type: 'mediumRun', time: "80'" },
-        { type: 'longRun', time: "35'" },
+        { type: 'mediumRun', time: "35'" },
     ],
     week12: [
         { type: 'mediumRun', time: "60'" },
