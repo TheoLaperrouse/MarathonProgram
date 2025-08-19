@@ -3,24 +3,13 @@
 </template>
 
 <script setup>
-import { useGetActivities } from '@/composables/useStravaQueries';
+import { useStrava } from '@/composables/useStrava';
 import polyline from '@mapbox/polyline';
-import { useLocalStorage } from '@vueuse/core';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { onMounted, watch, computed } from 'vue';
+import { onMounted, watch } from 'vue';
 
-const stravaAccessToken = useLocalStorage('stravaAccessToken', '');
-const { data: sportActivities, isPending: isActivitiesPending } = useGetActivities(stravaAccessToken, {
-    per_page: 30,
-});
-
-const activities = computed(() =>
-    sportActivities.value
-        ?.filter((activity) => ['Run', 'TrailRun'].includes(activity.type))
-        .sort((a, b) => new Date(b.start_date) - new Date(a.start_date)),
-);
-
+const { activities, isActivitiesPending } = useStrava();
 const getColor = (count, max) => {
     const ratio = count / max;
     const r = Math.floor(255 * ratio);
@@ -28,16 +17,15 @@ const getColor = (count, max) => {
     return `rgb(${r}, 0, ${b})`;
 };
 
-const normalizeSegment = (coord1, coord2) => {
-    return [coord1, coord2]
+const normalizeSegment = (coord1, coord2) =>
+    [coord1, coord2]
         .sort((a, b) => a[0] - b[0] || a[1] - b[1])
         .map((c) => c.join(','))
         .join('|');
-};
 
 let map;
 onMounted(() => {
-    map = L.map('map').setView([51.505, -0.09], 13);
+    map = L.map('map').setView([48.8566, 2.3522], 12);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 });
 watch(
@@ -67,7 +55,6 @@ watch(
 
                     L.polyline([coord1, coord2], {
                         color,
-                        weight: 3 + (count / maxCount) * 5,
                         opacity: 0.7,
                     }).addTo(map);
 
