@@ -1,3 +1,11 @@
+## [1.13.1](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.13.0...v1.13.1) (2025-08-19)
+
+
+### Bug Fixes
+
+* refactor to harmonize style of activities ([d40cc50](https://github.com/TheoLaperrouse/MarathonProgram/commit/d40cc50d60dd9775b1250f78b37dd116823758fa))
+* typo on training / minify segments width ([dcf6fcc](https://github.com/TheoLaperrouse/MarathonProgram/commit/dcf6fcca310649e2bee8f68f29773503c1375e60))
+
 # [1.13.0](https://github.com/TheoLaperrouse/MarathonProgram/compare/v1.12.1...v1.13.0) (2025-08-04)
 
 
