@@ -26,7 +26,7 @@
                             'opacity-40': isTrainingMade(date),
                             'ring-2 ring-white': !isTrainingMade(date),
                         }"
-                        :style="getStyle(training.type, date)"
+                        :style="getActivityStyle(training.type)"
                     />
                 </div>
             </template>
@@ -36,19 +36,9 @@
 
 <script setup>
 import TrainingDescription from '@/components/TrainingDescription.vue';
-import { useFormatter } from '@/composables/useFormatter';
 import { usePerformance } from '@/composables/usePerformance';
 import { useProgram } from '@/composables/useProgram';
 
-const { paces } = usePerformance();
+const { getActivityStyle } = usePerformance();
 const { formattedMarathonDate, weekTrainings, trainingDays, formattedProgramDate, isTrainingMade } = useProgram();
-const { hexToRGBA } = useFormatter();
-
-const getStyle = (type) => {
-    const color = paces.value[type].color;
-    return {
-        borderLeftColor: color,
-        backgroundColor: hexToRGBA(color, 0.15),
-    };
-};
 </script>

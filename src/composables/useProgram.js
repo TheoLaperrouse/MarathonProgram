@@ -100,6 +100,11 @@ export const useProgram = () => {
         return madeTrainings.value.includes(date);
     };
 
+    const getScheduledActivityByDate = (date) => {
+        const todayFormatted = format(date, 'dd/MM/yyyy');
+        return trainingSchedule.value[todayFormatted];
+    };
+
     return {
         dayTraining,
         marathonDate,
@@ -113,5 +118,6 @@ export const useProgram = () => {
         formattedProgramDate,
         isTrainingMade,
         updateMadeTrainings,
+        getScheduledActivityByDate,
     };
 };

@@ -11,12 +11,13 @@
                 </h2>
                 <div :class="`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4`">
                     <ActivityDetails
+                        class="rounded-lg shadow-sm p-2 border-l-4"
                         v-for="activity in week.activities"
                         :key="activity.id"
+                        :style="getActivityStyle(getScheduledActivityByDate(activity.date)?.type)"
+                        :badge-color="getActivityStyle(getScheduledActivityByDate(activity.date)?.type).borderLeftColor"
                         :activity="activity"
                         :show-date="true"
-                        class="rounded-lg shadow-sm p-4 border-2"
-                        :style="getStyle(activity)"
                     />
                 </div>
             </div>
@@ -25,35 +26,17 @@
 </template>
 <script setup>
 import ActivityDetails from '@/components/ActivityDetails.vue';
-import { useFormatter } from '@/composables/useFormatter';
+import { usePerformance } from '@/composables/usePerformance';
+import { useProgram } from '@/composables/useProgram';
 import { useStrava } from '@/composables/useStrava';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { startOfWeek, endOfWeek, format } from 'date-fns';
-import { minBy, maxBy } from 'lodash';
 import { computed } from 'vue';
 
 const { activities, isActivitiesPending } = useStrava();
-const { hexToRGBA } = useFormatter();
-
-const minSpeed = computed(() => minBy(activities.value, 'average_speed').average_speed);
-const maxSpeed = computed(() => maxBy(activities.value, 'average_speed').average_speed);
-
-const getRedGradientColor = (normalizedSpeed) => {
-    const invertedSpeed = 1 - normalizedSpeed;
-
-    const hexaRG = Math.floor(210 * invertedSpeed)
-        .toString(16)
-        .padStart(2, '0');
-
-    return `#FF${hexaRG.repeat(2)}`;
-};
-
-const getStyle = ({ average_speed }) => {
-    const normalizedSpeed = (average_speed - minSpeed.value) / (maxSpeed.value - minSpeed.value);
-    const borderColor = getRedGradientColor(normalizedSpeed);
-    return { borderColor, backgroundColor: hexToRGBA(borderColor, 0.4) };
-};
+const { getActivityStyle } = usePerformance();
+const { getScheduledActivityByDate } = useProgram();
 
 const activitiesByWeek = computed(() => {
     if (!activities.value || activities.value.length === 0) {

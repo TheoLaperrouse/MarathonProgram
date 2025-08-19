@@ -3,7 +3,7 @@ import { useLocalStorage } from '@vueuse/core';
 import { computed, ref } from 'vue';
 
 export const usePerformance = () => {
-    const { formatSecondsToMinutes, convertTimeToSeconds } = useFormatter();
+    const { formatSecondsToMinutes, convertTimeToSeconds, hexToRGBA } = useFormatter();
 
     const cardiacFrequencyMax = 220;
 
@@ -47,7 +47,7 @@ export const usePerformance = () => {
             pace: getPaceByPercentVMA(82.5),
             cardiacFrequency: getCardiacFrequencyByPercentVMA(80),
             percentVMA: 82.5,
-            color: '#77AABE',
+            color: '#4d9fc0ff',
         },
         intervalsRun: {
             pace: getPaceByPercentVMA(100),
@@ -63,5 +63,13 @@ export const usePerformance = () => {
         },
     });
 
-    return { paces, VO2Max, VMAKmH, marathonTime, bestTime, bestTimeSeconds };
+    const getActivityStyle = (type) => {
+        const color = paces.value[type]?.color ?? '#808080ff';
+        return {
+            borderLeftColor: color,
+            backgroundColor: hexToRGBA(color, 0.15),
+        };
+    };
+
+    return { paces, VO2Max, VMAKmH, marathonTime, bestTime, bestTimeSeconds, getActivityStyle };
 };
